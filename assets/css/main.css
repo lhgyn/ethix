@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+
+html, body, .w-counter-number, .w-pricing-item-price, .w-tabs-item-title, .stats-block .stats-desc .stats-number{
+	font-family: 'Rubik';
+}
+
+a{
+	color: #7bcbbf;
+}
+
+a:hover{
+	color: #046076;
+}
+.btn{
+	border-radius: 0 !important;
+}
+.btn-primary{
+	background: #7bcbbf;
+	color:  #fff;
+	border: 0;
+}
+.btn-primary:hover {
+    background-color: #046076;
+    border-color: #046076;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #02708a;
+    border-color: #fff;
+}
+
+.btn-secondary{
+	background-color: #046076;
+	border:  0;
+}
+.form-control{ border-radius: 0; font-size: 15px; }
+
+#main-container{
+	padding-top: 50px;
+	padding-bottom: 80px;
+}

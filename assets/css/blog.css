@@ -1,0 +1,181 @@
+#blog .blog-item{
+	display: flex;
+	align-items: center;
+	padding: 25px;
+	background: #fff;
+	box-shadow: #ddd 0 0 10px;
+	margin-bottom: 25px;
+}
+#blog .blog-item .grid{
+	width: 100%;
+	height: 100%;
+	margin: 0; 
+	padding: 0;
+}
+#blog .blog-item .img figure{
+	height: 250px;
+	margin: 5px;
+	position: relative;
+}
+#blog .blog-item .img figure img{
+	position: absolute;
+	top: 0; left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+
+#blog .blog-item .content{
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	align-self: stretch;
+}
+#blog .blog-item .content h3{
+	position: relative;
+	font-size: 24px;
+	margin-bottom: 20px;
+	color: #046076;
+}
+#blog .blog-item .content h3::after{
+	content: "";
+	position: absolute;
+	bottom: -10px; left:  0;
+	width: 40%;
+	border: 1px solid #fa6233 ;
+}
+#blog .blog-item .content p{
+	color: #777;
+}
+
+@media only screen 
+and (max-width: 1199px){
+	#blog .blog-item{
+		padding: 10px;
+	}
+	#blog .blog-item .img figure{
+		min-width: 200px !important;
+		max-width: 200px;
+		height: 200px;
+		margin: 5px;
+		position: relative;
+	}
+	#blog .blog-item .content h3{
+		font-size: 20px
+	}
+	#blog .blog-item .content p{
+		font-size: 14px;
+	}
+
+}
+
+@media only screen
+and (max-width: 768px){
+	#blog .blog-item{
+		flex-direction: column;
+	}
+
+	#blog .blog-item .content{
+		align-items: unset;
+	}
+
+	#blog .blog-item .content h3::after{
+		left: 50%;
+		margin-left: -20%;
+	}
+}
+
+
+
+
+#sidebar .card{
+	display: inherit;
+	background: #f1f1f1;
+	min-height: 300px;
+	border-radius: 0;
+	border:  0;
+	width: 100%;
+	margin-bottom: 25px;
+}
+#sidebar .card .title{
+	background: #046076;
+	padding: 6px 15px;
+}
+#sidebar .card .title h4{
+	color:  #fff;
+}
+
+#sidebar .card .list{
+	padding-top: 25px;
+}
+#sidebar ul{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#sidebar li{
+	display: flex;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #ddd; 
+}
+#sidebar li .image{
+	padding-right: 15px;
+}
+
+#sidebar #categories li a{
+	text-decoration: none;
+	width: 100%;
+	padding: 10px;
+	background: #fff;
+}
+
+
+.single-content figure {
+	display: block;
+	width: 60%;
+}
+
+.single-content figure img{
+	width: 100%;
+	height: 350px;
+	object-fit: cover;
+	object-position: top;
+}
+
+#single-post .single-content img{
+	max-width: 100%;
+	height: auto;
+}
+@media only screen and
+(max-width: 991px){
+	.single-content figure {
+		width: 100%;
+	}
+}
+
+
+
+
+
+#blog-nav li a{
+	border-radius: 0;
+	margin: 1px;
+}
+#blog-nav li a:hover{
+	color: #FFF;
+}
+
+#single-post .breadcrumb{
+	flex-wrap: initial;
+}
+#single-post .breadcrumb li{
+    white-space: nowrap;  
+    overflow: hidden;
+    text-overflow: ellipsis;			
+}
+#single-post .breadcrumb li:nth-child(1),
+#single-post .breadcrumb li:nth-child(2){
+	min-width: 70px;
+}
+
