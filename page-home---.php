@@ -2,158 +2,139 @@
 // *
 //  *
 //  * Developer front-end: Peterson Macedo [https://www.behance.net/petersondma4c1]
-//  * Developer back-end: Felipe Ribeiro
 //  * Developer back-end: Jandimar
 //  *
 // *
 ?>
 
+ 
+<?php
+/////////// BUSCA OS SLIDES DOS CAMPOS PERSONALIZADOS 
+    if( have_rows('slideshow') ){
+        while( have_rows('slideshow') ){
+            the_row();
+            $titulo = get_sub_field('titulo');
+            $description = get_sub_field('descricao');
+            $category = get_sub_field('categoria');
+            $imagem = get_sub_field('background');
+            $slideshow[] = [ $titulo, $description, $category->slug, $imagem, $category->count ];
+        }
+    }
+
+?>
 <main class="woocommerce">
-	<div class="container-fluid" id="shop">
-		<div class="container">
-            <div class="row products">
-                <div class="title-page-loja">
-                    <h1>Mais Vendidos</h1>
-                    <p>Nós mantemos a qualidade impecável de nossas fórmulas.</p>
+	<div class="row" id="home">
+            <div class="slide-home container-fluid owl-carousel">
+            
+            <?php foreach ($slideshow as $key => $value): ?>
+                <?php if($value[4]): ?>
+                <div class="row content-slide-home" style="background: url('<?php echo $value[3] ?>') center center no-repeat; background-size: cover; ">
+                    <div class="container">
+                        <div class="col-lg-5 col-md-6 col-sm-12 content-info-slide-home">
+                            <h3><?php echo $value[0] ?></h3>
+                            <h4 class="subtitle-slide-home">
+                                <?php echo $value[1] ?>
+                            </h4>
+                            <div class="row">
+                            
+                                <?php
+                                $query = new WP_Query(array(
+                                    'post_type'=>'product',
+                                    'product_cat' => $value[2],
+                                    'posts_per_page' => 2
+                                    )
+                                );
+                                while($query->have_posts()){
+                                    $query->the_post(); ?>
+                                    <?php echo $value[4] < 2? '<div class="col-3"></div>':''?>
+                                    <div class="col-6 product-slide-home">
+                                        <div class="single-product-slide-home">
+                                            <?php
+                                            if ( has_post_thumbnail( $slides->post->ID ) ) 
+                                                echo get_the_post_thumbnail( $slides->post->ID, 'woocommerce_gallery_thumbnail' ); 
+                                            else 
+                                                echo '<img src="' . woocommerce_placeholder_img_src() . '" />'; 
+                                            ?>
+                                            <h2 class="woocommerce-loop-product__title titulo" style="">
+                                                <?php echo get_the_title( $slides->post->ID ); ?>
+                                            </h2>
+                                        </div>
+                                    </div>
+
+                                <?php } ?>
+                                
+                                <a class="btn cta-slide-home" href="<?php echo home_url('/categoria-produto/').$value[2];?>">Saiba Mais</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <?php             
-                /*///////////////////////////////////////////////////////
-                ////////// PRODUTOS MAIS VENDIDOS
-                ///////////////////////////*/
-                $best_selling = array(
-                   'post_type' => 'product',
-                   'post_status' => 'publish',
-                   'posts_per_page' => 6,
-                   'meta_key' => 'total_sales',
-                   'orderby' => 'meta_value_num'
-                );
-                $best_selling = new WP_Query($best_selling);
-                
+            <?php endif; ?>
+            <?php endforeach; ?>
 
-                if ( $best_selling->have_posts() ) :
-                    $i = 0; $limite = 6;
-                    while ($best_selling->have_posts()) : $best_selling->the_post();
-                    $excludes[] = get_the_ID();
-                    //print_r($best_selling->post);
-                    //echo get_post_meta($best_selling->post->ID, '_stock', true);
+            </div>
 
-                    echo ($i == 0 || $i == $limite) ? '<div class="row">' : ''; ?>
-                        <div class="col-sm col-md-4 col-lg-2">
-                            <div class="my-inner content-product-loja">
-                                <a href="<?php echo get_permalink($my_query->post->ID);?>" >
-                                    <?php 
-                                    if ( has_post_thumbnail( $best_selling->post->ID ) ) 
-                                        echo get_the_post_thumbnail( $best_selling->post->ID, 'woocommerce_thumbnail' ); 
-                                    else 
-                                        echo '<img src="' . woocommerce_placeholder_img_src() . '" />'; 
-                                    ?>
-                                    <h2 class="woocommerce-loop-product__title titulo" style=""><?php the_title(); ?></h2>
-                                </a>
-                                <div class="detalhes"><?php echo $best_selling->post->post_excerpt; ?></div>
-                                <?php get_star_rating(get_field('rating_star')); ?>
-                                <a class="btn btn-default read-more" href="<?php echo get_permalink($best_selling->post->ID);?>">Saiba Mais</a>
-                                <?php  ?>
+
+    </div>
+
+    <section id="mais-vendidos-home">
+        <div class="container">
+            <div class="row">
+                <div class="content-best-products" id="content-best-saller">
+                    <h3 class="text-center h3 title-best-seller-home">Sucesso de vendas</h3>
+                    <?php
+                    $best_selling = array(
+                       'post_type' => 'product',
+                       'post_status' => 'publish',
+                       'posts_per_page' => 4,
+                       'meta_key' => 'total_sales',
+                       'orderby' => 'meta_value_num'
+                    );
+                    $best_selling = new WP_Query($best_selling);
+
+                    if ( $best_selling->have_posts() ) :
+                        $i = 0; $limite = 4;
+                        while ($best_selling->have_posts()) : $best_selling->the_post();
+                        $excludes[] = get_the_ID();
+                        echo ($i == 0 || $i == $limite) ? '<div class="row row-products-home">' : ''; ?>
+                            <div class="col-sm col-md-6 col-lg-3">
+                                <div class="content-product-home">
+                                    <a href="<?php echo get_permalink($my_query->post->ID);?>" >
+                                        <?php 
+                                        if ( has_post_thumbnail( $best_selling->post->ID ) ) 
+                                            echo get_the_post_thumbnail( $best_selling->post->ID, 'woocommerce_gallery_thumbnail' ); 
+                                        else 
+                                            echo '<img src="' . woocommerce_placeholder_img_src() . '" />'; 
+                                        ?>
+                                        <h2 class="woocommerce-loop-product__title titulo title-product-home" style=""><?php the_title(); ?></h2>
+                                    </a>
+                                    <div class="detalhes"><?php echo $best_selling->post->post_excerpt; ?></div>
+                                    <?php get_star_rating(get_field('rating_star')); ?>
+                                    <a class="btn btn-default read-more" href="<?php echo get_permalink($best_selling->post->ID);?>">Saiba Mais</a>
+                                    <?php  ?>
+                                </div>
                             </div>
-                        </div>
-                    <?php echo ($i == ($limite - 1) || $i == ($limite + 5)) ? '</div>' : '';
-                    $i++;
-                    endwhile;
-                    ?>
-                <?php endif; 
-                wp_reset_postdata(); ?>
+                        <?php echo ($i == ($limite - 1) || $i == ($limite + 5)) ? '</div>' : '';
+                        $i++;
+                        endwhile;
+                        ?>
+                    <?php endif; ?>
+                    <div class="col-12">
+                        <a class="btn btn-all-products" href="<?php echo home_url('/produtos') ?>">VER TODOS PRODUTOS</a>
+                    </div>
+                    <?php wp_reset_postdata(); ?>       
 
-                <?php                
-                /*///////////////////////////////////////////////////////
-                ////////// PRODUTOS EM DESTAQUE
-                ///////////////////////////*//*
-                $highlights = array(
-                   'post_type' => 'product',
-                   'post_status' => 'publish',
-                   'posts_per_page' => 6,
-                   'post__not_in' => $excludes,
-                   'orderby' => 'rand'
-                );
-                $highlights = new WP_Query($highlights);
-
-                if ( $highlights->have_posts() ) :
-                    $i = 0; $limite = 6;
-                    while ($highlights->have_posts()) : $highlights->the_post();
-                    echo ($i == 0 || $i == $limite) ? '<div class="row">' : ''; ?>
-                        <div class="col-sm col-md-4 col-lg-2">
-                            <div class="my-inner content-product-loja">
-                                <a href="<?php echo get_permalink($my_query->post->ID);?>" >
-                                    <?php 
-                                    if ( has_post_thumbnail( $highlights->post->ID ) ) 
-                                        echo get_the_post_thumbnail( $highlights->post->ID, 'woocommerce_thumbnail' ); 
-                                    else 
-                                        echo '<img src="' . woocommerce_placeholder_img_src() . '" />'; 
-                                    ?>
-                                    <h2 class="woocommerce-loop-product__title titulo" style=""><?php the_title(); ?></h2>
-                                </a>
-                                <div class="detalhes"><?php echo $highlights->post->post_excerpt; ?></div>
-                                <?php get_star_rating(get_field('rating_star')); ?>
-                                <a class="btn btn-default read-more" href="<?php echo get_permalink($highlights->post->ID);?>">Saiba Mais</a>
-                                <?php  ?>
-                            </div>
-                        </div>
-                    <?php echo ($i == ($limite - 1) || $i == ($limite + 5)) ? '</div>' : '';
-                    $i++;
-                    endwhile;
-                    ?>
-                <?php endif; 
-                wp_reset_postdata(); ?>
-
-            </div> <?php */ ?>
+                </div>
+            </div>
         </div>
-    </div> 
-    
+    </section>
+
     <?php              
     /*///////////////////////////////////////////////////////
     ////////// NEWSLETTER
     ///////////////////////////*/
         get_template_part('newsletter');
     ?>
-                 
-    <?php 
-    /*///////////////////////////////////////////////////////
-    ////////// BLOG 
-    ///////////////////////////*/ ?>
-    <?php /*
-    <div class="container" id="articles-loja">
-        <div class="row">
-            <div class="artigos" style="background-color: white; width: 100%; padding: 50px;">
-                <h1 class="title-articles-loja">Artigos Principais</h1>
-                <hr>
-                <div class="row">
-                    <?php
-                    $args = array(
-                        'post_type' => 'post'
-                    );
-                    $post_query = new WP_Query($args);
-                    if($post_query->have_posts() ) {
-                        $i = 0;
-                        while(($post_query->have_posts()) and ($i < 3) ) {
-                            $i++;
-                            $post_query->the_post(); ?> 
-                            <div class="col-sm content-article-loja" style="position: relative;">
-                                <a href="<?php echo get_permalink($post_query->the_post->ID);?>">
-                                <?php echo get_the_post_thumbnail( $post_id, 'thumbnail') ?>
-                                    <h2 class="titulo"><?php the_title(); ?></h2>
-                                    <p class="resumo-article"><?php echo wp_trim_words( get_the_excerpt(), 12); ?></p>
-                                    <div class="saiba-mais">
-                                        <a class="btn btn-default btn-article" href="<?php echo get_permalink($post_query->the_post->ID);?>" style="">Ler mais</a>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php }
-                    } ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    */ ?>
-
-
+    
     <section id="blog-home">
         <div class="container">
                 <div id="content-latest-articles">
@@ -296,3 +277,5 @@
 </main>
 
 <?php get_footer(); ?>
+
+

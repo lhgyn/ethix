@@ -1,7 +1,7 @@
 <?php if(!is_page('finalizar-compra')){
 	get_template_part('newsletter');
 	}
- ?>
+?>
 
 <footer>
 	<?php if(!is_page('finalizar-compra')): ?>
