@@ -77,6 +77,28 @@ jQuery(document).ready(function($) {
         });
     });
 
+    $('#toggle-mobile').toggle(function() {
+        $('.mobile-collapse').show('800');
+        $('#menu-closed').hide();
+        $('#menu-opened').show();
+    }, function() { 
+        $('.mobile-collapse').css({"min-width": "inherit", "transition": "none"});       
+        $('.mobile-collapse').hide('800');
+        $('#menu-closed').show();
+        $('#menu-opened').hide();
+    });
+    $('.dropdown-toggle').click(function(event) {
+        event.preventDefault();
+        var menuName = $(this).html();
+        $('.dropdown-close a').html(`<div><span>Voltar</span><span style="float:right; padding-right:15px">${menuName}</span></div>`);
+        $('.mobile-collapse').css({"display": "block", "min-width": "100%", "margin-left": "110%", "transition": "ease-in-out .6s"});
+        $('.dropdown-menu').css({"left": "0", "transition": "ease-in-out .6s"});
+    });
+    $('.dropdown-close').click(function(event) {
+        event.preventDefault();
+        $('.dropdown-menu').css({"left": "-100%", "transition": "ease-in-out .6s"});
+        $('.mobile-collapse').css({"display": "block", "min-width": "100%", "margin-left": "0", "transition": "ease-in-out .6s"});
+    });
 
 });
 

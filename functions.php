@@ -46,7 +46,7 @@ require_once('includes/wp_bootstrap_pagination.php');
 function medrx_scripts()
 {   
     //wp_deregister_script( 'jquery' );
-    //wp_enqueue_script('jquery-3.3.1', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js');
+    wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.3.1.min.js');
     wp_enqueue_script('bootstrap4', get_template_directory_uri() . '/assets/libs/bootstrap4/js/bootstrap.min.js');
     wp_enqueue_script('inputmask', get_template_directory_uri() . '/assets/libs/inputmask/jquery.mask.min.js');
     wp_enqueue_script('owlcarousel', get_template_directory_uri() . '/assets/libs/owl-carousel/owl.carousel.min.js');

@@ -24,26 +24,48 @@
                    'post_type' => 'product',
                    'post_status' => 'publish',
                    'posts_per_page' => 6,
-                   'meta_key' => 'total_sales',
-                   'orderby' => 'meta_value_num'
+
+                'meta_key' => 'total_sales',
+                'orderby' => 'meta_value_num',
+
+                   'meta_query' => array( 
+                       'relation' => 'AND',
+                       array(                        
+                           'key' => 'stop_sell',
+                           'type' => 'NUMERIC',
+                           'value' => 1,
+                           'compare' => '!=',
+                       ),
+                    )
                 );
                 $best_selling = new WP_Query($best_selling);-
 
                 if ( $best_selling->have_posts() ) :
                     $i = 0; $limite = 6;
                     while ($best_selling->have_posts()) : $best_selling->the_post();
+<<<<<<< HEAD
                     $excludes[] = get_the_ID();
                     //print_r($best_selling->post);
                     //echo get_post_meta($best_selling->post->ID, '_stock', true);-
+=======
+                    $excludes[] = get_the_ID();                    
+                    $stock_status = get_post_meta($best_selling->post->ID, '_stock', true);
+
+>>>>>>> db23cd145c39c961a983f4b3d4711998530954ab
                     echo ($i == 0 || $i == $limite) ? '<div class="row">' : ''; ?>
-                        <div class="col-sm col-md-4 col-lg-2">
+                        <div class="col-sm col-md-4 col-lg-2" style="position: relative">                            
                             <div class="my-inner content-product-loja">
+                                <?php //echo get_post_meta($best_selling->post->ID, 'total_sales', true); ?>
                                 <a href="<?php echo get_permalink($my_query->post->ID);?>" >
                                     <?php 
-                                    if ( has_post_thumbnail( $best_selling->post->ID ) ) 
-                                        echo get_the_post_thumbnail( $best_selling->post->ID, 'woocommerce_thumbnail' ); 
-                                    else 
-                                        echo '<img src="' . woocommerce_placeholder_img_src() . '" />'; 
+                                    if ( has_post_thumbnail( $best_selling->post->ID ) ) : ?>
+                                        <figure style="position: relative;">
+                                            <?php echo get_the_post_thumbnail( $best_selling->post->ID, 'woocommerce_thumbnail' );  ?>
+                                            
+                                        </figure>
+                                    <?php else :
+                                        echo '<img src="' . woocommerce_placeholder_img_src() . '" />';
+                                        endif; 
                                     ?>
                                     <h2 class="woocommerce-loop-product__title titulo" style=""><?php the_title(); ?></h2>
                                 </a>
@@ -62,7 +84,7 @@
 
                 <?php                
                 /*///////////////////////////////////////////////////////
-                ////////// PRODUTOS EM DESTAQUE
+                ////////// PRODUTOS EM DESTAQUE - Substituido pelo bloco acima.
                 ///////////////////////////*//*
                 $highlights = array(
                    'post_type' => 'product',
@@ -114,7 +136,7 @@
                  
     <?php 
     /*///////////////////////////////////////////////////////
-    ////////// BLOG 
+    ////////// BLOG / *[removido] substituido pelo bloco abaixo 
     ///////////////////////////*/ ?>
     <?php /*
     <div class="container" id="articles-loja">
