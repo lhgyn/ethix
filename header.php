@@ -4,11 +4,6 @@
     // if( strpos( $current_url, '/payment-method' ) ) {
     //     echo '<script>alert("Pagamento")</script>';
     // }
-    /*
-
-php yii migrate/create create_school_table --fields="name:string:notNull, type:string, county:string, sector:string, complement:string, reference:string, morning_coordinator:string, late_coordinator:string, director:string, phone:string, tag:string, front_photo:string, note:text, date:date"
-
-    */
 } ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,6 +16,7 @@ php yii migrate/create create_school_table --fields="name:string:notNull, type:s
 
     <?php wp_head(); ?>
     <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.1/dist/bootstrap-float-label.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body <?php body_class()?>>
     
@@ -153,14 +149,16 @@ php yii migrate/create create_school_table --fields="name:string:notNull, type:s
 		  <div class="mobile-collapse" style="display: none">
 		  	
 		  	<div class="mobile-search" style="padding-top: 25px;">
+			  <form action="">
 		  		<div class="input-group mb-3">
-				  <input type="text" class="form-control" placeholder="Faça uma busca" aria-label="Recipient's username" aria-describedby="basic-addon2">
-				  <div class="input-group-append">
-				    <button class="btn btn-outline-secondary" type="button">
-				    	<span><i class="fa fa-search"></i></span>
-				    </button>
-				  </div>
+				  	  <input type="text" name="s" class="form-control" placeholder="Faça uma busca" aria-label="Recipient's username" aria-describedby="basic-addon2">
+					  <div class="input-group-append">
+					    <button class="btn btn-outline-secondary" type="submit">
+					    	<span><i class="fa fa-search"></i></span>
+					    </button>
+					  </div>
 				</div>
+			  </form>
 		  	</div>
 		  	<?php 
 			  	wp_nav_menu( array(

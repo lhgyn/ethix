@@ -393,5 +393,6 @@ h5.subtotal-text {
 }
 #mobile-dropdown .dropdown-menu li:nth-child(1) > a::after{
 	content: "\f0a8";
+	font-family: "Fontawesome";
 	left: 23px; top: 10px
 }
