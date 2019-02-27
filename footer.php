@@ -10,23 +10,20 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md">
-                        <h3>Ethix</h3>
+                        <h3>Sobre a Ethix</h3>
 						<?php dynamic_sidebar( 'footer-1' ) ?>
 					</div>
 					<div class="col-md">
-                        <h3>Informações</h3>
+                        <h3>Empresa</h3>
 						<?php dynamic_sidebar( 'footer-2' ) ?>
 					</div>
-					<div class="col-md">
-                        <h3>Produtos</h3>
-                        <div class="row">
-                            <div class="col-md">
-                                <?php dynamic_sidebar( 'footer-3' ) ?>
-                            </div>
-                            <div class="col-md">
-                                <?php dynamic_sidebar( 'footer-4' ) ?>
-                            </div>
-                        </div>
+                    <div class="col-md">
+                        <h3>Atendimento</h3>
+                        <?php dynamic_sidebar( 'footer-3' ) ?>
+                    </div>
+                    <div class="col-md">
+                        <h3>Informações</h3>
+                        <?php dynamic_sidebar( 'footer-4' ) ?>
                     </div>
 				</div>
 			</div>
