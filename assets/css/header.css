@@ -87,6 +87,7 @@ ul.nav-icons .dropdown .btn{
 	text-transform: uppercase;
 	font-weight: 400;
 }
+.dropdown-close{ display: none }
 }
 /* 
 @media only screen
@@ -348,7 +349,7 @@ h5.subtotal-text {
 #mobile-dropdown .dropdown-menu {
     position: absolute;
     display: block;
-    top: 72px; left: -100%;
+    top: 72px; left: 100%;
     width: 100% !important; height: 100vh !important;
     border-radius: 0;
     border: 0;
