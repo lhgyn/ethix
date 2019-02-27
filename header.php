@@ -4,6 +4,11 @@
     // if( strpos( $current_url, '/payment-method' ) ) {
     //     echo '<script>alert("Pagamento")</script>';
     // }
+    /*
+
+php yii migrate/create create_school_table --fields="name:string:notNull, type:string, county:string, sector:string, complement:string, reference:string, morning_coordinator:string, late_coordinator:string, director:string, phone:string, tag:string, front_photo:string, note:text, date:date"
+
+    */
 } ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,9 +24,9 @@
 </head>
 <body <?php body_class()?>>
     
-<header>
+<header style="position: relative">
 	<?php if(!is_page('finalizar-compra')): ?>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
 	  <div class="container">
   		  <a class="navbar-brand" href="<?php echo home_url() ?>">
 		    <img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
@@ -126,6 +131,56 @@
 		  </div>
 	  </div>
 	</nav>
+
+	<nav id="nav-mobile" class="d-block d-lg-none fixed-top">
+	  <div class="pl-3 pr-3 pt-2 pb-2">
+		  <div class="navbar-header">
+		  	  <a id="toggle-mobile" href="#">
+			    <i id="menu-closed" class="fas fa-bars"></i>
+			    <i id="menu-opened" class="fas fa-times" style="display: none"></i>
+			  </a>
+			  <a class="navbar-brand" href="<?php echo home_url() ?>">
+			  	<h1 class="d-none">Ethix</h1>
+			  	<img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
+			  	<span class="dashicons dashicons-cart"></span>
+			  </a>
+			  <a href="<?php echo home_url('/carrinho') ?>" style="position:relative">
+			  	<span id="cart-qty" class="count-cart"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+			  	<i class="fas fa-shopping-cart"></i>
+			  </a>
+		  </div>
+
+		  <div class="mobile-collapse" style="display: none">
+		  	
+		  	<div class="mobile-search" style="padding-top: 25px;">
+		  		<div class="input-group mb-3">
+				  <input type="text" class="form-control" placeholder="Faça uma busca" aria-label="Recipient's username" aria-describedby="basic-addon2">
+				  <div class="input-group-append">
+				    <button class="btn btn-outline-secondary" type="button">
+				    	<span><i class="fa fa-search"></i></span>
+				    </button>
+				  </div>
+				</div>
+		  	</div>
+		  	<?php 
+			  	wp_nav_menu( array(
+					'theme_location'  => 'primary',
+					'depth'	          => 2, // 1 = no dropdowns, 2 = with dropdowns.
+					'container'       => '',
+					'container_class' => '',
+					'container_id'    => '',
+					'menu_class'      => '',
+					'menu_id' 		  => 'mobile-dropdown',
+					'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
+					'walker'          => new WP_Bootstrap_Navwalker(),
+				) );
+ 			?>
+		  </div>
+	  </div>
+	</nav>
+
+
+
 	<?php endif; ?>
 
 	<?php if(is_page('finalizar-compra')): ?>
