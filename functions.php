@@ -86,11 +86,11 @@ add_action('wp_enqueue_scripts', 'medrx_scripts');
 ////////// REGISTRA OS MENUS DO SITE
 ////////////////////////////*/
 register_nav_menus(array(
-    'primary' => __('Principal', 'medrx'),
-    'footer-left' => __('MedRx', 'medrx'),
-    'footer-center-left' => __('Informações', 'medrx'),
-    'footer-center-right' => __('Produtos 1', 'medrx'),    
-    'footer-right' => __('Produtos 2', 'medrx')
+    'primary' => __('Principal', 'ethix'),
+    'footer-left' => __('Ethix', 'ethix'),
+    'footer-center-left' => __('Empresa', 'ethix'),
+    'footer-center-right' => __('Atendimento', 'ethix'),    
+    'footer-right' => __('Informações', 'ethix')
 ));
 
 
@@ -99,54 +99,54 @@ register_nav_menus(array(
 ////////////////////////////*/
 function footer_widgets_init() {
     register_sidebar( array(
-    'name'          => esc_html__( 'Loja 1', 'medrx' ),
+    'name'          => esc_html__( 'Loja 1', 'ethix' ),
     'id'            => 'loja-1',
-    'description'   => esc_html__( 'Menu Institucional', 'medrx' ),
+    'description'   => esc_html__( 'Menu Institucional', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h3 class="widget-title">',
     'after_title'   => '</h3>',
   ) );
   register_sidebar( array(
-    'name'          => esc_html__( 'Sidebar loja', 'medrx' ),
+    'name'          => esc_html__( 'Sidebar loja', 'ethix' ),
     'id'            => 'loja',
-    'description'   => esc_html__( 'Sidebar loja', 'medrx' ),
+    'description'   => esc_html__( 'Sidebar loja', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h3 class="widget-title">',
     'after_title'   => '</h3>',
   ) );
   register_sidebar( array(
-    'name'          => esc_html__( 'Footer MedRx', 'medrx' ),
+    'name'          => esc_html__( 'Footer Ethix', 'ethix' ),
     'id'            => 'footer-1',
-    'description'   => esc_html__( 'Menu Institucional', 'medrx' ),
+    'description'   => esc_html__( 'Menu Institucional', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h3 class="widget-title">',
     'after_title'   => '</h3>',
   ) );
   register_sidebar( array(
-    'name'          => esc_html__( 'Footer Informações', 'medrx' ),
+    'name'          => esc_html__( 'Footer Empresa', 'ethix' ),
     'id'            => 'footer-2',
-    'description'   => esc_html__( 'Menu de Páginas', 'medrx' ),
+    'description'   => esc_html__( 'Menu de empresa', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h2 class="widget-title">',
     'after_title'   => '</h2>',
   ) );
   register_sidebar( array(
-    'name'          => esc_html__( 'Footer Produtos 1', 'medrx' ),
+    'name'          => esc_html__( 'Footer Atendimento', 'ethix' ),
     'id'            => 'footer-3',
-    'description'   => esc_html__( 'Menu de Produtos coluna 1', 'medrx' ),
+    'description'   => esc_html__( 'Menu de atendimento', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h2 class="widget-title">',
     'after_title'   => '</h2>',
   ) );
   register_sidebar( array(
-    'name'          => esc_html__( 'Footer Produtos 2', 'medrx' ),
+    'name'          => esc_html__( 'Footer Informações', 'ethix' ),
     'id'            => 'footer-4',
-    'description'   => esc_html__( 'Menu de Produtos coluna 2', 'medrx' ),
+    'description'   => esc_html__( 'Menu de informações', 'ethix' ),
     'before_widget' => '',
     'after_widget'  => '',
     'before_title'  => '<h2 class="widget-title">',
