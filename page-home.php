@@ -38,20 +38,13 @@
                        ),
                     )
                 );
-                $best_selling = new WP_Query($best_selling);-
+                $best_selling = new WP_Query($best_selling);
 
                 if ( $best_selling->have_posts() ) :
                     $i = 0; $limite = 6;
                     while ($best_selling->have_posts()) : $best_selling->the_post();
-<<<<<<< HEAD
                     $excludes[] = get_the_ID();
-                    //print_r($best_selling->post);
-                    //echo get_post_meta($best_selling->post->ID, '_stock', true);-
-=======
-                    $excludes[] = get_the_ID();                    
                     $stock_status = get_post_meta($best_selling->post->ID, '_stock', true);
-
->>>>>>> db23cd145c39c961a983f4b3d4711998530954ab
                     echo ($i == 0 || $i == $limite) ? '<div class="row">' : ''; ?>
                         <div class="col-sm col-md-4 col-lg-2" style="position: relative">                            
                             <div class="my-inner content-product-loja">
