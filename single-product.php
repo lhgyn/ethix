@@ -132,7 +132,7 @@
 									    </div>
 									    <input type="hidden" name="subject" value="Avise-me - <?php echo get_the_title() ?>">
 									    <input type="hidden" name="product_id" value="<?php echo get_the_ID() ?>">
-									    <input type="hidden" name="message" value="Solicitação de aviso, para produto <?php echo get_the_title() ?> indisponível.">
+									    <input type="hidden" name="message" value="a equipe Ethix, informa que o produto <?php echo get_the_title() ?> já está disponível.">
 									  	<button type="submit" class="btn btn-primary">Enviar</button>
 									  	<span id="status-message" class="float-right"></span>
 									</form>
