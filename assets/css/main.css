@@ -35,7 +35,19 @@ a:hover{
 }
 .form-control{ border-radius: 0; font-size: 15px; }
 
+
 #main-container{
 	padding-top: 50px;
 	padding-bottom: 80px;
+}
+
+.wpcf7-form-control-wrap{
+	width: 100%;
+}
+.wpcf7-form p, .wpcf7-form label{
+	margin: 0; padding: 0;
+}
+
+.wpcf7-submit{
+	margin-left: auto;
 }

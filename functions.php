@@ -436,3 +436,112 @@ class list_product_widget extends WP_Widget {
     }
 
 }
+
+
+/**
+ * Registers a new post type
+ * @uses $wp_post_types Inserts new post type object into the list
+ *
+ * @param string  Post type key, must not exceed 20 characters
+ * @param array|string  See optional args description above.
+ * @return object|WP_Error the registered post type object, or an error object
+ */
+function product_warnme() {
+
+    $labels = array(
+        'name'               => __( 'Avise-me', 'ethix' ),
+        'singular_name'      => __( 'Avise-me', 'ethix' ),
+        'add_new'            => _x( 'Adicionar Novo', 'ethix', 'ethix' ),
+        'add_new_item'       => __( 'Adicionar Novo', 'ethix' ),
+        'edit_item'          => __( 'Editar', 'ethix' ),
+        'new_item'           => __( 'Novo', 'ethix' ),
+        'view_item'          => __( 'Ver', 'ethix' ),
+        'search_items'       => __( 'Buscar', 'ethix' ),
+        'not_found'          => __( 'Não Encontrado', 'ethix' ),
+        'not_found_in_trash' => __( 'Nada Apagado', 'ethix' ),
+        'parent_item_colon'  => __( 'Ascendente:', 'ethix' ),
+        'menu_name'          => __( 'Avise-me Produto', 'ethix' ),
+    );
+
+    $args = array(
+        'labels'              => $labels,
+        'hierarchical'        => false,
+        'description'         => 'description',
+        'taxonomies'          => array(),
+        'public'              => true,
+        'show_ui'             => true,
+        'show_in_menu'        => true,
+        'show_in_admin_bar'   => false,
+        'menu_position'       => null,
+        'menu_icon'           => null,
+        'show_in_nav_menus'   => false,
+        'publicly_queryable'  => true,
+        'exclude_from_search' => false,
+        'has_archive'         => true,
+        'query_var'           => true,
+        'can_export'          => true,
+        'rewrite'             => true,
+        'capability_type'     => 'post',
+        'supports'            => array(
+            'title',
+            'editor',
+            'author',
+            'custom-fields'
+        ),
+    );
+
+    register_post_type( 'aviseme', $args );
+}
+add_action( 'init', 'product_warnme' );
+
+
+////////////////////////////////////////////////////
+// Scheduled Action Hook
+// Avisa o cliente quando um produto volta ao estoque.
+///////////////////////////////////////
+function avisar_produto_disponivel() {
+
+    $args = array(
+        'post_type'=>'aviseme',
+        'meta_key' => '_notified',
+        'meta_value' => 0,
+        'meta_compare' => '='
+    );
+    $query = new WP_Query($args);
+    $posts = $query->posts;
+
+    foreach ($posts as $key => $value) {
+        $data = (object) unserialize($value->post_content); 
+        $to = $data->email;
+        $subject = $data->subject;
+        $body = 'Olá '.$data->name.'. '.$data->message;
+        $headers = array('Content-Type: text/html; charset=UTF-8');   
+
+        if( get_post_meta($data->product_id, 'stop_sell', true) == 1 ){            
+            $mailResult = wp_mail( $to, $subject, $body, $headers );
+            if($mailResult)
+                update_post_meta( $value->ID, '_notified', 1 );
+
+            update_post_meta( $value->ID, '_notified', 1 );           
+        }
+    }
+}
+add_action( 'avisar_produto_disponivel', 'avisar_produto_disponivel' );
+
+// Custom Cron Recurrences
+function client_notify_recurrence( $schedules ) {
+    $schedules['minute'] = array(
+        'display' => __( 'Minutos', 'ethix' ),
+        'interval' => 3600,
+    );
+    return $schedules;
+}
+add_filter( 'cron_schedules', 'client_notify_recurrence' );
+
+// Schedule Cron Job Event
+function notificar_cliente() {
+    if ( ! wp_next_scheduled( 'avisar_produto_disponivel' ) ) {
+        wp_schedule_event( time(), 'minute', 'avisar_produto_disponivel' );
+    }
+}
+add_action( 'wp', 'notificar_cliente' );

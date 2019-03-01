@@ -104,5 +104,36 @@ jQuery(document).ready(function($) {
 
 </script>
 
+<script>
+    jQuery(document).ready(function($) {
+        var hidden = '<input type="hidden" name="produto" value="<?php echo get_the_title() ?>">';
+        $(hidden).insertBefore('#aviseme-button');
+
+        $('#aviseme-form').submit(function(event) {
+
+            event.preventDefault();
+            var formData = $(this).serialize();
+            var http = '<?php echo get_template_directory_uri()."/includes/avisar-produto.php" ?>';
+
+            $.ajax({
+                url: http,
+                type: 'POST',
+                data: formData,
+            }).success(function(data){
+                console.log(data);
+                var response = JSON.parse(data);
+                $('#status-message').html(response.message).css({"color": "orange"});
+                $('#aviseme-form').each(function(){
+                  this.reset();
+                });
+                //alert(response);
+            });
+            
+
+        });
+    });
+</script>
+
+
 </body>
 </html>

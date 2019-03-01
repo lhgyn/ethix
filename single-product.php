@@ -42,7 +42,7 @@
 
 						<?php } ?>
 
-
+					<?php if(!get_field('stop_sell')): ?>
 						<ul id="product-variations" class="pricing-selector col-12" style="padding: 0">
 			              <!-- ID DO PRODUTO  -->
 			              <?php 
@@ -107,11 +107,52 @@
 
 			            <div class="row">
 			            	<div class="col btn_comprar">
-
 			              		<a id="btn-comprar" class="btn btn-danger" href="" style="display: flex; align-items: center; justify-content: center;">Comprar</a>
-
 			            	</div>
 			            </div>
+			        <?php endif; ?>
+
+			        <?php if(get_field('stop_sell')): ?>
+						
+						<div class="pt-3">
+							<h5 class="text-muted">Este produto está indisponível.</h5>
+							<div class="card mt-3">
+								<div class="card-header">
+									<h6 class="text-muted">Avise-me quando chegar.</h6>
+								</div>
+								<div class="card-body">
+									<form id="aviseme-form" action="" method="post">
+									    <div class="form-group">
+									      	<label for="name">Nome</label>
+									      	<input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+									    </div>
+									    <div class="form-group">
+									    	<label for="email">Email</label>
+									      	<input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+									    </div>
+									    <input type="hidden" name="subject" value="Avise-me - <?php echo get_the_title() ?>">
+									    <input type="hidden" name="product_id" value="<?php echo get_the_ID() ?>">
+									    <input type="hidden" name="message" value="Solicitação de aviso, para produto <?php echo get_the_title() ?> indisponível.">
+									  	<button type="submit" class="btn btn-primary">Enviar</button>
+									  	<span id="status-message" class="float-right"></span>
+									</form>
+								</div>
+							</div>
+						</div>
+			        <?php endif; ?>
+
+			        <?php 
+				        $args = array(
+					        'post_type'=>'aviseme',
+					        'meta_key' => '_notified',
+					        'meta_value' => 0,
+					        'meta_compare' => '='
+					    );
+					    $query = new WP_Query($args);
+					    $posts = $query->posts;
+
+					    echo '<pre>'; print_r($posts); echo '</pre>';
+				     ?>
 
 					</div>
 
