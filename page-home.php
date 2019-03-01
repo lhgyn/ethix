@@ -43,10 +43,8 @@
                 if ( $best_selling->have_posts() ) :
                     $i = 0; $limite = 6;
                     while ($best_selling->have_posts()) : $best_selling->the_post();
-
-                    $excludes[] = get_the_ID();                    
+                    $excludes[] = get_the_ID();
                     $stock_status = get_post_meta($best_selling->post->ID, '_stock', true);
-
                     echo ($i == 0 || $i == $limite) ? '<div class="row">' : ''; ?>
                         <div class="col-sm col-md-4 col-lg-2" style="position: relative">                            
                             <div class="my-inner content-product-loja">

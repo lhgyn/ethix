@@ -34,7 +34,7 @@
 
 	<div id="footer-copy">
 		<div class="col text-center">
-			<p>© <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados </p>
+			<p>&copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados </p>
 		</div>
 	</div>
 </footer>
