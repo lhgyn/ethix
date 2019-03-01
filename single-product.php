@@ -141,19 +141,6 @@
 						</div>
 			        <?php endif; ?>
 
-			        <?php 
-				        $args = array(
-					        'post_type'=>'aviseme',
-					        'meta_key' => '_notified',
-					        'meta_value' => 0,
-					        'meta_compare' => '='
-					    );
-					    $query = new WP_Query($args);
-					    $posts = $query->posts;
-
-					    echo '<pre>'; print_r($posts); echo '</pre>';
-				     ?>
-
 					</div>
 
 				</div>
