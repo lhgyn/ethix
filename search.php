@@ -23,30 +23,32 @@
 				foreach ($posts as $key => $value) {
 					if($value->post_type == 'product')
 						$products[] = $value;
-					else
+					elseif($value->post_type == 'post')
 						$articles[] = $value;
 				};
 			?>
 
 			<?php if($products): ?>
 			<div class="col-12 woocommerce">
-				<div class="row">
-					<?php foreach ($products as $key => $value) { ?>					
-            		<div class="col-3">
-            			<div class="content-best-products" id="content-best-saller">
-							<div class="content-product-home">
-                                <a href="/produto/<?=$value->post_name?>" >
-                                    <?php echo get_the_post_thumbnail($value->ID, 'large', ['class'=>'img-fluid']); ?>
-                                    <h2 class="woocommerce-loop-product__title titulo title-product-home" style=""><?=$value->post_title?></h2>
-                                </a>
-                                <div class="detalhes"><?=$value->post_excerpt?></div>
-                                <?php get_star_rating( get_field('rating_star', $value->ID ) ); ?>
-                                <a class="btn btn-default read-more" href="/produto/<?=$value->post_name?>">Saiba Mais</a>
-                                <?php  ?>
-                            </div>
-	                    </div>
-            		</div>
-            		<?php } ?>
+				<!-- <div class="container"> -->
+					<div class="row">
+						<?php foreach ($products as $key => $value) { ?>
+		            		<div class="col-xd col-sm-6 col-md-4 col-lg-3 box-product-search">
+		            			<div class="content-best-products" id="content-best-saller">
+									<div class="content-product-home">
+		                                <a href="/produto/<?=$value->post_name?>" >
+		                                    <?php echo get_the_post_thumbnail($value->ID, 'large', ['class'=>'img-fluid']); ?>
+		                                    <h2 class="woocommerce-loop-product__title titulo title-product-home" style=""><?=$value->post_title?></h2>
+		                                </a>
+		                                <div class="detalhes"><?=$value->post_excerpt?></div>
+		                                <?php get_star_rating( get_field('rating_star', $value->ID ) ); ?>
+		                                <a class="btn btn-default read-more" href="/produto/<?=$value->post_name?>">Saiba Mais</a>
+		                                <?php  ?>
+		                            </div>
+			                    </div>
+		            		</div>
+		            	<?php } ?>
+		            <!-- </div>            		 -->
             	</div>
 			</div>
             <?php endif; ?>
@@ -58,10 +60,10 @@
 					<?php foreach ($articles as $key => $value) { ?>
 						<div class="col-12 pb-3">
 							<div class="row">
-								<div class="col-4">
+								<div class="col-sm-12 col-md-4">
 									<?=get_the_post_thumbnail($value->ID, 'medium', ['class'=>'img-fluid', 'style'=>'width:100%;height:220px;object-fit:cover']); ?>
 								</div>
-								<div class="col-8">
+								<div class="col-sm-12 col-md-8">
 									<h4 class="text-secondary"><?=$value->post_title?></h4>
 									<p><?=wp_trim_words( $value->post_content )?></p>								
 								</div>
