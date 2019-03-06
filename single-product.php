@@ -113,6 +113,10 @@
 			        <?php endif; ?>
 
 			        <?php if(get_field('stop_sell')): ?>
+						<?php echo get_the_ID() ?> <br>
+			        	<?php echo get_the_title() ?> <br>
+			        	<?php echo get_the_post_thumbnail_url() ?> <br>
+			        	<?php echo get_the_permalink() ?>
 						
 						<div class="pt-3">
 							<h5 class="text-muted">Este produto está indisponível.</h5>
@@ -132,6 +136,9 @@
 									    </div>
 									    <input type="hidden" name="subject" value="Avise-me - <?php echo get_the_title() ?>">
 									    <input type="hidden" name="product_id" value="<?php echo get_the_ID() ?>">
+									    <input type="hidden" name="product_name" value="<?php echo get_the_title() ?>">
+									    <input type="hidden" name="product_image" value="<?php echo get_the_post_thumbnail_url() ?>">
+									    <input type="hidden" name="product_link" value="<?php echo get_the_permalink() ?>">
 									    <input type="hidden" name="message" value="a equipe Ethix, informa que o produto <?php echo get_the_title() ?> já está disponível.">
 									  	<button type="submit" class="btn btn-primary">Enviar</button>
 									  	<span id="status-message" class="float-right"></span>

@@ -87,12 +87,14 @@ jQuery(document).ready(function($) {
         $('#menu-closed').show();
         $('#menu-opened').hide();
     });
-    $('.dropdown-toggle').click(function(event) {
+    $('#nav-mobile .dropdown-toggle').click(function(event) {
         event.preventDefault();
         var menuName = $(this).html();
+        var hashMenuName = 1 + Math.floor(Math.random() * 100);
+        $(this).parent('li').attr('id', hashMenuName);
         $('.dropdown-close a').html(`<div><span>Voltar</span><span style="float:right; padding-right:15px"><b>${menuName}</b></span></div>`);
         $('.mobile-collapse').css({"display": "block", "min-width": "100%", "margin-left": "-110%", "transition": "ease-in-out .6s"});
-        $('.dropdown-menu').css({"left": "0", "transition": "ease-in-out .6s"});
+        $(`#${hashMenuName} .dropdown-menu`).css({"left": "0", "transition": "ease-in-out .6s"});
     });
     $('.dropdown-close').click(function(event) {
         event.preventDefault();
@@ -129,7 +131,6 @@ jQuery(document).ready(function($) {
                 //alert(response);
             });
             
-
         });
     });
 </script>
