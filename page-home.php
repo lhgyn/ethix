@@ -3,7 +3,7 @@
 //  *
 //  * Developer front-end: Peterson Macedo [https://www.behance.net/petersondma4c1]
 //  * Developer back-end: Felipe Ribeiro
-//  * Developer back-end: Jandimar
+//  * Developer back-end: Jandimar Rocha
 //  *
 // *
 ?>
