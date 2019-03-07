@@ -205,7 +205,7 @@ h5.subtotal-text {
 }
 
 #navbarSupportedContent .goToStore a{ background: #046076; color: #fff !important; padding: 15px 6px ; }
-#navbarSupportedContent > ul > li > ul.dropdown-menu > li{ width: 50%; height: auto !important;}
+#navbarSupportedContent > ul > li > ul.dropdown-menu > li{ width: 50%; height: auto !important; margin-right: 25px; border-bottom: 1px solid #e5e5e5}
 #navbarSupportedContent > ul > li > ul.dropdown-menu > li a.dropdown-item {
 	color: #666;
     text-transform: capitalize;
