@@ -3694,6 +3694,13 @@ h6.title-summary {
     font-weight: 400!important;
 }
 
+.col-md.content-list-product > ul.products > li > a .detalhes h2 {
+    text-transform: lowercase;
+    font-size: 14px !important;
+    color: #828282 !important;
+    font-weight: 400!important;
+}
+
 #product-page .content-sidebar-loja {
     min-height: 150px;
     margin-top: -70px;
