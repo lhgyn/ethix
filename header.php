@@ -22,7 +22,7 @@
     
 <header style="position: relative">
 	<?php if(!is_page('finalizar-compra')): ?>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
+	<nav id="site-navbar" class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
 	  <div class="container">
   		  <a class="navbar-brand" href="<?php echo home_url() ?>">
 		    <img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
