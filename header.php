@@ -140,7 +140,7 @@
 			  	<img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
 			  	<span class="dashicons dashicons-cart"></span>
 			  </a>
-			  <a href="<?php echo home_url('/carrinho') ?>" style="position:relative">
+			  <a href="<?php echo home_url('/carrinho') ?>" class="cart-mobile" style="position:relative">
 			  	<span id="cart-qty" class="count-cart"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
 			  	<i class="fas fa-shopping-cart"></i>
 			  </a>
@@ -149,7 +149,7 @@
 		  <div class="mobile-collapse" style="display: none">
 		  	
 		  	<div class="mobile-search" style="padding-top: 25px;">
-			  <form action="">
+			  <form action="<?php echo home_url() ?>">
 		  		<div class="input-group mb-3">
 				  	  <input type="text" name="s" class="form-control" placeholder="Faça uma busca" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  <div class="input-group-append">
