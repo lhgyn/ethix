@@ -235,7 +235,7 @@ h5.subtotal-text {
 	width: 100%;
 	transition: ease-in-out .3s;
 }
-#navbarSupportedContent ul.dropdown-menu > li a.dropdown-item::after{
+/* #navbarSupportedContent ul.dropdown-menu > li a.dropdown-item::after{
 	content: '\f104';
 	font-family: 'Fontawesome';
 	position: absolute;
@@ -246,7 +246,7 @@ h5.subtotal-text {
 	content: '\f100';
 	transform: rotate(-180deg);
 	transition: ease-in-out .2s; 
-}
+} */
 
 
 #navbarSupportedContent .goToStore a:hover{ color: #fff !important; }
