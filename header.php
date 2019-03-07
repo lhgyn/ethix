@@ -22,7 +22,7 @@
     
 <header style="position: relative">
 	<?php if(!is_page('finalizar-compra')): ?>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
+	<nav id="site-navbar" class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
 	  <div class="container">
   		  <a class="navbar-brand" href="<?php echo home_url() ?>">
 		    <img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
@@ -149,7 +149,7 @@
 		  <div class="mobile-collapse" style="display: none">
 		  	
 		  	<div class="mobile-search" style="padding-top: 25px;">
-			  <form action="">
+			  <form action="<?php echo home_url() ?>">
 		  		<div class="input-group mb-3">
 				  	  <input type="text" name="s" class="form-control" placeholder="Faça uma busca" aria-label="Recipient's username" aria-describedby="basic-addon2">
 					  <div class="input-group-append">
