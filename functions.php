@@ -514,10 +514,10 @@ function avisar_produto_disponivel() {
         $data = (object) unserialize($value->post_content); 
         $to = $data->email;
         $subject = $data->subject;
-        $body = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible"content="IE=edge"><title>Ethix Nutraceutikos</title><link rel="stylesheet"href=""><link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700"rel="stylesheet"></head><body style="font-family:Rubik,sans-serif"><div style="display:block;margin:0 auto;max-width:750px;padding-top:15px"><header style="background:#ccc;padding-top:25px;padding-bottom:25px"><h1 style="text-align:center"><img src="https://ethix.com.br/wp-content/themes/ethix/images/logo4.png"alt="MedRx"style="max-width:100px"></h1></header><main><div><div style="text-align:center"><h4>Olá '.$data->name.'</h4><p>O produto que você quer chegou em nosso estoque.</p><p>Corre lá para garantir o seu antes que acabe outra vez.</p></div><div style="text-align:center"><a href="'.$data->product_link.'"><img src="'.$data->$product_image.'" alt="'.$data->name.'"style="margin:0 auto"></a></div><div style="text-align:center;margin-top:25px;margin-bottom:50px"><a href="'.$data->product_link.'"style="text-decoration:none;color:#fff;background:#ff8c00;padding:10px 45px;border-radius:10px;border-bottom:3px solid #b8860b;font-size:26px">COMPRAR</a></div></div><hr><ul style="list-style:none;margin:0 auto;padding:0;width:80%;display:flex;align-items:center;justify-content:space-between"><li><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-satisfacao2.png"alt="Selos Ethix"style="max-width:60px"></li><li><img src="https://ethix.com.br/wp-content/themes/ethix/images/lock-cert3.png"alt="Selos Ethix"style="max-width:60px"></li><li><img src="https://ethix.com.br/wp-content/themes/ethix/images/logo-pagarme-1.png"alt="Selos Ethix"style="max-width:60px"></li><li><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-card.png"alt="Selos Ethix"style="max-width:60px"></li><li><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-garantia2.png"alt="Selos Ethix"style="max-width:60px"></li></ul></main><footer style="background:#02708a;padding-top:25px;padding-bottom:40px;margin-top:25px"><p style="text-align:center;color:#fff;font-size:14px">© 2019 Ethix Nutracêuticos – Todos direitos reservados</p></footer></div></body></html>';
-        $headers = array('Content-Type: text/html; charset=UTF-8');   
+        $body = '<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible"content="IE=edge"><title>Ethix Nutraceutikos</title><link rel="stylesheet"href=""><link href="https://fonts.googleapis.com/css?family=Rubik:400,500,700"rel="stylesheet"></head><body style="font-family:Rubik,sans-serif"><div style="display:block;margin:0 auto;max-width:750px;padding-top:15px"><header style="background:#ccc;padding-top:25px;padding-bottom:25px"><h1 style="text-align:center"><img src="https://ethix.com.br/wp-content/themes/ethix/images/logo4.png"alt="MedRx"style="max-width:100px"></h1></header><main><div><div style="text-align:center"><h4>Olá '.$data->name.'</h4><p>O produto que você quer chegou em nosso estoque.</p><p>Corre lá para garantir o seu antes que acabe outra vez.</p></div><div style="text-align:center"><a href="'.$data->product_link.'"><img src="'.$data->product_image.'" alt="'.$data->product_name.'"style="margin:0 auto;max-width:300px"></a></div><div style="text-align:center;margin-top:25px;margin-bottom:50px"><a href="'.$data->product_link.'"style="text-decoration:none;color:#fff;background:#ff8c00;padding:10px 45px;border-radius:10px;border-bottom:3px solid #b8860b;font-size:26px">COMPRAR</a></div></div><hr><div style="display:block;width:100%;" align="center"><ul style="list-style:none;margin:0 auto;padding:0;width:auto;display:inline-block;"><li style="display:inline-block;margin:0;padding:10px"><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-satisfacao2.png"alt="Selos Ethix"style="max-width:60px"></li><li style="display:inline-block;margin:0;padding:10px"><img src="https://ethix.com.br/wp-content/themes/ethix/images/lock-cert3.png"alt="Selos Ethix"style="max-width:60px"></li><li style="display:inline-block;margin:0;padding:10px"><img src="https://ethix.com.br/wp-content/themes/ethix/images/logo-pagarme-1.png"alt="Selos Ethix"style="max-width:60px"></li><li style="display:inline-block;margin:0;padding:10px"><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-card.png"alt="Selos Ethix"style="max-width:60px"></li><li style="display:inline-block;margin:0;padding:10px"><img src="https://ethix.com.br/wp-content/themes/ethix/images/selo-garantia2.png"alt="Selos Ethix"style="max-width:60px"></li></ul></div></main><footer style="background:#02708a;padding-top:25px;padding-bottom:40px;margin-top:25px"><p style="text-align:center;color:#fff;font-size:14px">© 2019 Ethix Nutracêuticos – Todos direitos reservados</p></footer></div></body></html>';
+        $headers = array('Content-Type: text/html; charset=UTF-8', 'From: Ethix <sac@ethix.com.br>');   
 
-        if( get_post_meta($data->product_id, 'stop_sell', true) == 1 ){            
+        if( get_post_meta($data->product_id, 'stop_sell', true) == 0 ){            
             $mailResult = wp_mail( $to, $subject, $body, $headers );
             if($mailResult)
                 update_post_meta( $value->ID, '_notified', 1 );
@@ -545,3 +545,16 @@ function notificar_cliente() {
     }
 }
 add_action( 'wp', 'notificar_cliente' );
+
+
+
+/*/////////////////////////////////////////////////////////
+///////////// ACF Custom CSS: para Product Single Page
+//////////////////////////////////////*/
+function product_single_custom_css(){
+    echo '<!--/*/////////////////////////////////////////////////////////
+    ///////////// ACF Custom CSS: Product Single Page
+    //////////////////////////////////////*/-->'
+    .'<style>'.get_field('custom_css', get_the_ID()).'</style>';
+}
+add_action( 'wp_head', 'product_single_custom_css' );

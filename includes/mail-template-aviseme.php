@@ -27,7 +27,7 @@ $template = '<!DOCTYPE html>
 				</div>
 				<div style="text-align: center;">
 					<a href="'.$data->product_link.'">
-						<img src="'.$data->$product_image.'" alt="'.$data->name.'" style="margin: 0 auto">
+						<img src="'.$data->product_image.'" alt="'.$data->product_name.'" style="margin: 0 auto">
 					</a>					
 				</div>
 				<div style="text-align: center; margin-top: 25px;margin-bottom: 50px;">
