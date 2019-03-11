@@ -291,7 +291,7 @@ jQuery(document).ready(function($) {
 
     validateForm = {
         validate: function(tab, btnleft, btnright){
-            if( $('#checkout-form').attr('data-status') == 'loged' ){
+            if( !$('#checkout-form').attr('data-status') == 'loged' ){
                changeTabs.go( tab, btnleft, btnright );
             }else{
                 if(name_hasError == 0 && last_name_hasError == 0 && cpf_hasError == 0 && phone_hasError == 0 && cep_hasError == 0){

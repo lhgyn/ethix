@@ -294,7 +294,6 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 			if(method_price != undefined){
 				if( $( 'table:not(:has(tr#shipping-total))' ) ) {
 				    $( '<tr id="shipping-total">'+response+'</tr>' ).insertAfter( $( ".cart-subtotal" ) );
-				    console.log('Total Frete: <?php echo file_get_contents( home_url("/cart-session") ) ?>');
 				}
 				else{
 					$('#shipping-total').html(response);
