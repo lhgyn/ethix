@@ -360,6 +360,7 @@ body.woocommerce-order-received section.woocommerce-customer-details{
 
 body.woocommerce-order-received .woocommerce-message {
     background-color: #f9f9f9;
+    padding: 1em;
 }
 
 body.woocommerce-order-received .woocommerce-message a.button {
@@ -379,6 +380,7 @@ body.woocommerce-order-received .woocommerce-message a.button:hover{
 
 body.woocommerce-order-received  .woocommerce-message::before {
     color: #02708a;
+    display: none;
 }
 body.woocommerce-order-received .woocommerce-message {
     border-top-color: #02708a;
