@@ -84,4 +84,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 	<?php endif; ?>
 
+	<section id="tankyou-buttons">
+		<div>
+			<p><a href="<?php echo home_url(); ?>" class="button">IR PARA HOME</a></p>
+			<p><a href="<?php echo home_url('/produtos')?>" class="button">CONTINUAR COMPRANDO</a></p>
+		</div>
+	</section>
+
 </div>

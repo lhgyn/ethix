@@ -113,39 +113,34 @@
 			        <?php endif; ?>
 
 			        <?php if(get_field('stop_sell')): ?>
-						<?php echo get_the_ID() ?> <br>
-			        	<?php echo get_the_title() ?> <br>
-			        	<?php echo get_the_post_thumbnail_url() ?> <br>
-			        	<?php echo get_the_permalink() ?>
-						
-						<div class="pt-3">
-							<h5 class="text-muted">Este produto está indisponível.</h5>
-							<div class="card mt-3">
-								<div class="card-header">
-									<h6 class="text-muted">Avise-me quando chegar.</h6>
-								</div>
-								<div class="card-body">
-									<form id="aviseme-form" action="" method="post">
-									    <div class="form-group">
-									      	<label for="name">Nome</label>
-									      	<input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
-									    </div>
-									    <div class="form-group">
-									    	<label for="email">Email</label>
-									      	<input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
-									    </div>
-									    <input type="hidden" name="subject" value="Avise-me - <?php echo get_the_title() ?>">
-									    <input type="hidden" name="product_id" value="<?php echo get_the_ID() ?>">
-									    <input type="hidden" name="product_name" value="<?php echo get_the_title() ?>">
-									    <input type="hidden" name="product_image" value="<?php echo get_the_post_thumbnail_url() ?>">
-									    <input type="hidden" name="product_link" value="<?php echo get_the_permalink() ?>">
-									    <input type="hidden" name="message" value="a equipe Ethix, informa que o produto <?php echo get_the_title() ?> já está disponível.">
-									  	<button type="submit" class="btn btn-primary">Enviar</button>
-									  	<span id="status-message" class="float-right"></span>
-									</form>
+							<div class="pt-3">
+								<h5 class="text-muted">Este produto está indisponível.</h5>
+								<div class="card mt-3">
+									<div class="card-header">
+										<h6 class="text-muted">Avise-me quando chegar.</h6>
+									</div>
+									<div class="card-body">
+										<form id="aviseme-form" action="" method="post">
+												<div class="form-group">
+														<label for="name">Nome</label>
+														<input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+												</div>
+												<div class="form-group">
+													<label for="email">Email</label>
+														<input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
+												</div>
+												<input type="hidden" name="subject" value="Avise-me - <?php echo get_the_title() ?>">
+												<input type="hidden" name="product_id" value="<?php echo get_the_ID() ?>">
+												<input type="hidden" name="product_name" value="<?php echo get_the_title() ?>">
+												<input type="hidden" name="product_image" value="<?php echo get_the_post_thumbnail_url() ?>">
+												<input type="hidden" name="product_link" value="<?php echo get_the_permalink() ?>">
+												<input type="hidden" name="message" value="a equipe Ethix, informa que o produto <?php echo get_the_title() ?> já está disponível.">
+												<button type="submit" class="btn btn-primary">Enviar</button>
+												<span id="status-message" class="float-right"></span>
+										</form>
+									</div>
 								</div>
 							</div>
-						</div>
 			        <?php endif; ?>
 
 					</div>

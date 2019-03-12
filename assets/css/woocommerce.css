@@ -321,9 +321,6 @@ select:-internal-autofill-selected
     position: relative;
     z-index: 999;
 }
-.create-account .woocommerce-password-strength{
-
-}
 
 .create-account  .woocommerce-password-hint{
     background: #fff;
@@ -339,9 +336,114 @@ select:-internal-autofill-selected
     color: #046076;
 }
 
-#tab-description h2,
+/* #tab-description h2,
 #tab-reviews h2{
     display: none !important;
-}
+} */
 .woocommerce #review_form #respond p.stars:nth-child(2){ display: none !important }
 
+body.woocommerce-order-received #main-container > div > div > div:nth-child(2) > div > div > p {
+    color: #02708a;
+}
+body.woocommerce-order-received  ul.woocommerce-thankyou-order-details {
+    margin: 0 auto !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-wrap: wrap;
+    padding: 1em;
+    background: #f9f9f9 !important;
+    width: 100%;
+}
+body.woocommerce-order-received section.woocommerce-customer-details{
+    display: none !important;
+}
+
+body.woocommerce-order-received .woocommerce-message {
+    background-color: #f9f9f9;
+    padding: 1em;
+}
+
+body.woocommerce-order-received .woocommerce-message a.button {
+    background: #c75b00;
+    color: #fff;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    border-bottom: 2px solid #555;
+    transition: ease-in-out .3s;
+}
+body.woocommerce-order-received .woocommerce-message a.button:hover{
+    background: #e66900;
+    border-bottom: 2px solid #444;
+    transition: ease-in-out .3s;
+}
+
+body.woocommerce-order-received  .woocommerce-message::before {
+    color: #02708a;
+    display: none;
+}
+body.woocommerce-order-received .woocommerce-message {
+    border-top-color: #02708a;
+}
+
+body.woocommerce-order-received  #thakyou-detail-order > tbody > tr > td.woocommerce-table__product-name.product-name > a {
+    color: #02708a; 
+}
+body.woocommerce-order-received  #thakyou-detail-order > tbody > tr > td.woocommerce-table__product-name.product-name{
+    display: flex;
+    justify-content: space-between;
+}
+
+body.woocommerce-order-received  #thakyou-detail-order > tfoot > tr th:first-child,
+body.woocommerce-order-received  #thakyou-detail-order > tfoot > tr td {
+    padding: 15px 8px;
+    padding-bottom: 5px;
+}
+body.woocommerce-order-received section#tankyou-buttons div{
+    margin-top: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+body.woocommerce-order-received section#tankyou-buttons div p:last-child{
+    margin-left: 25px;
+}
+body.woocommerce-order-received section#tankyou-buttons div p a{
+    padding: 15px 25px;
+    border-bottom: 2px solid #046076;
+    color: #046076;
+    border-radius: 6px;
+}
+
+body.woocommerce-order-received .table-bordered td, body.woocommerce-order-received .table-bordered th{
+    border-bottom: 0;
+}
+
+@media only screen
+and (max-width:1200px){
+    body.woocommerce-order-received  ul.woocommerce-thankyou-order-details {
+        flex-direction: column;
+    }
+    body.woocommerce-order-received ul.order_details li{ border-right: 0; }
+    body.woocommerce-order-received .woocommerce-message a.button{
+        float: none;
+    }
+}
+
+@media only screen
+and (max-width:992px){
+    body.woocommerce-order-received .woocommerce-message a.button{ min-width: 100%; }
+    body.woocommerce-order-received #main-container{ padding-top: 0; }
+    body.woocommerce-order-received section#tankyou-buttons div{ flex-direction: column; margin-top: 40px}
+    body.woocommerce-order-received section#tankyou-buttons div p{
+        margin: 0 !important; padding: 0 !important;
+        margin-bottom: 15px !important;
+        text-align: center;
+        width: 100%;
+    }
+    body.woocommerce-order-received section#tankyou-buttons div p a{
+        font-size: 14px;
+    }
+    body.woocommerce-order-received  .woocommerce-message{ padding: 25px; }
+    body.woocommerce-order-received  .woocommerce-message::before{ display: none; }
+}
