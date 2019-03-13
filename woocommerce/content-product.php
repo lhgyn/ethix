@@ -24,8 +24,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-
 <li <?php wc_product_class(); ?>>
+	<span class="outofstock-msg">Indisponível</span>
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
