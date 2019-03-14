@@ -3820,3 +3820,38 @@ h6.title-summary {
         min-height: 112px!important;
     }
 }
+
+/* produto sem estoque - vitrini */
+
+.outofstock-msg {
+    display: none;
+}
+
+#product-page .content-list-product ul.products li.outofstock span.outofstock-msg {
+    display: block;
+    position: absolute;
+    background: #444;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    line-height: 10px;
+}
+
+#product-page .content-list-product ul.products li.outofstock a.button.product_type_variable {
+    background: #aaa!important;
+}
+
+#product-page .content-list-product ul.products li.outofstock a img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+#product-page > .content-list-product > ul.products > li.outofstock h2 {
+    color: #aaa!important;
+}
+
+#product-page > .content-list-product > ul.products > li.outofstock {
+    background: #F0F0F0;
+}
