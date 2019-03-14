@@ -255,35 +255,15 @@ function remove_checkout_coupon_form(){
     remove_action( 'woocommerce_before_checkout_form', 'woocommerce_checkout_coupon_form', 10 );
 }
 
-//REMOVE TABS
+// REMOVE TABS DA PAGINA SIMPLES DO PRODUTO.
+function woo_remove_product_tabs( $tabs ) {
+    unset( $tabs['description'] );          // Remove the description tab
+    unset( $tabs['reviews'] );          // Remove the reviews tab
+    unset( $tabs['additional_information'] );   // Remove the additional information tab
+    return $tabs;
+}
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
-function woo_remove_product_tabs( $tabs ) {
-
-    unset( $tabs['additional_information'] );          // Remove the additional information tab
-
-    return $tabs;
-}
-
-//RENOMEANDO TABS
-add_filter( 'woocommerce_product_tabs', 'wp_woo_rename_reviews_tab', 98);
-
-function wp_woo_rename_reviews_tab($tabs) {
-    
-    $tabs['reviews']['title'] = 'Avaliações';
-    
-    return $tabs;
-}
-
-//PRIORIDADE TABS DEFAULT
-add_filter( 'woocommerce_product_tabs', 'woo_reorder_tabs', 98 );
-function woo_reorder_tabs( $tabs ) {
-
-    $tabs['description']['priority'] = 1;           // Description first
-    $tabs['reviews']['priority'] = 2;   // Additional information second
-
-    return $tabs;
-}
 
 //Removendo alguns itens do sumário da pagina do produto (Nome do produto, Preço do produto e Referencia do produto)
 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 );
@@ -558,3 +538,8 @@ function product_single_custom_css(){
     .'<style>'.get_field('custom_css', get_the_ID()).'</style>';
 }
 add_action( 'wp_head', 'product_single_custom_css' );
+
+
+
+
+

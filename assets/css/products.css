@@ -11,17 +11,17 @@ MEDrx [content-single-product]
 .summary.entry-summary form.variations_form.cart,
 .flex-control-nav.flex-control-thumbs,
 .woocommerce-breadcrumb,
-.shop_attributes tbody tr:last-child {
+/* .shop_attributes tbody tr:last-child {
     display: none!important;
-}
+} */
 
 .woocommerce-tabs.wc-tabs-wrapper {
     width: 100%!important;
 }
 
-.woocommerce .woocommerce-product-gallery__wrapper {
-    /*pointer-events: none;*/
-}
+/* .woocommerce .woocommerce-product-gallery__wrapper {
+    /*pointer-events: none;
+} */
 
 .main-page-product {
     padding-bottom: 0; 
@@ -294,7 +294,7 @@ MEDrx [content-single-product]
         padding-bottom: 130%;
         cursor: pointer
     }
-    .product-selector .unit .cta a {}
+
     .product-selector .unit-header img {
         position: absolute;
         bottom: 36px;

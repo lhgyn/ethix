@@ -24,6 +24,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! empty( $breadcrumb ) ) {
 
 	echo $wrap_before;
+	echo '<div class="container pt-4">';
 
 	foreach ( $breadcrumb as $key => $crumb ) {
 
@@ -41,7 +42,8 @@ if ( ! empty( $breadcrumb ) ) {
 			echo $delimiter;
 		}
 	}
-
+	
+	echo '</div>';
 	echo $wrap_after;
 
 }
