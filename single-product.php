@@ -152,20 +152,15 @@
 
 	<?php get_template_part( 'selos' ); ?>
 
-	<?php $tabs = apply_filters( 'woocommerce_product_tabs', array() ); ?>
-	<?php print_r($rating); ?>
-
 	<section id="product-description" class="info-section">					
 			<div class="title-line">
-				<div class="container">
-						<div class="col-12">							
-							<h2>Descrição</h2>
-						</div>
+				<div class="container title">
+						<div class="col-12 p-0 pb-3"><h2>Descrição</h2></div>
 				</div>
 			</div>							
 			<div class="content-line">
 				<div class="container">
-						<div class="col-12">
+						<div class="col-12 p-0">
 							<?php the_content(); ?>
 						</div>
 				</div>
@@ -175,11 +170,11 @@
 	<section id="product-promisse" class="info-section">
 			<div class="title-line">
 				<div class="container title">
-					<div class="col-12"><h2>Nossa Promessa</h2></div>
+					<div class="col-12 p-0"><h2>Nossa Promessa</h2></div>
 				</div>
 			</div>
 			<div class="container">
-				<div class="col-12 pt-4">
+				<div class="col-12 p-0 pt-4">
 						<?php echo get_field('nossa_promessa', get_the_ID()); ?>
 				</div>
 			</div>
@@ -188,11 +183,11 @@
 	<section id="product-ask" class="info-section">
 			<div class="title-line">
 				<div class="container title">
-					<div class="col-12"><h2>Perguntas Frequentes</h2></div>
+					<div class="col-12 p-0"><h2>Perguntas Frequentes</h2></div>
 				</div>
 			</div>
 			<div class="container">
-					<div class="col-12 pt-4">
+					<div class="col-12 p-0 pt-4">
 							<?php echo get_field('perguntas_frequentes', get_the_ID()); ?>
 					</div>
 			</div>
@@ -201,11 +196,11 @@
 	<section id="product-referency" class="info-section">
 			<div class="title-line">
 				<div class="container title">
-					<div class="col-12"><h2>Perguntas Frequentes</h2></div>
+					<div class="col-12 p-0"><h2>Referências Clínicas</h2></div>
 				</div>
 			</div>
 			<div class="container">
-					<div class="col-12 pt-4">
+					<div class="col-12 p-0 pt-4">
 							<?php echo get_field('referencias_clinicas', get_the_ID()); ?>
 					</div>
 			</div>
@@ -214,13 +209,13 @@
 	<section id="product-rating" class="info-section">			
 			<div class="title-line">
 				<div class="container">
-						<div class="col-12">
+						<div class="col-12 p-0">
 							<h2>Avaliações</h2>
 						</div>
 				</div>
 			</div>
 				<div class="container">
-						<div class="col-12 pt-4">
+						<div class="col-12 p-0 pt-4">
 							<?php comments_template( 'woocommerce/single-product-reviews' ); ?>
 						</div>
 				</div>

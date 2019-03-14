@@ -443,27 +443,37 @@ and (max-width:992px){
     body.woocommerce-order-received  .woocommerce-message::before{ display: none; }
 }
 
-
-.info-section .title-line{
-    background: #f1f1f1;
-    border-bottom: 2px solid #ddd;
-    padding-top: 15px;
-    padding-bottom: 10px;
+.info-section {
+    margin-bottom: 50px;
 }
-.info-section .title-line h2{ color:#046076; position: relative; display: inline-block }
-.info-section .title-line h2:before{    
+.info-section .title-line{
+    background: transparent;
+}
+.info-section .title-line .container .col-12{    
+    border-top: 1px solid #ddd;
+}
+.info-section .title-line h2{
+    font-size: 22px;
+    padding-top: 20px;
+    padding-bottom: 0px;
+    font-weight: 600;
+    color:#046076;
+    position: relative;
+    display:inline-block;
+}
+/* .info-section .title-line h2:before{    
     position: absolute;
     content: "";
-    width: 40%;
+    width: 100px;
     height: 2px;
     left: 0;
     bottom: -5px;
     background: #046076;
-}
-.info-section .content-line{
+} */
+/* .info-section .content-line{
     padding-top: 25px;
     padding-bottom: 40px;
-}
+} */
 
 #product-referency p a{
     /* These are technically the same, but use both */
