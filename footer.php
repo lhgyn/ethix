@@ -133,15 +133,13 @@ jQuery(document).ready(function($) {
             });
             
         });
-
-
-        //$('label[for="shipping_method_0_correios-pac3"]').append('<span>  15 dias   </span>');
-        //$('label[for="shipping_method_0_correios-sedex4"]').append('<span>  5 dias   </span>');
         
         
 		$( document ).ajaxComplete(function(){
-            $('label[for="shipping_method_0_correios-pac3"]').append('<span>  15 dias úteis   </span>');
-            $('label[for="shipping_method_0_correios-sedex4"]').append('<span>  5 dias úteis   </span>');
+            $('#pac-days').remove();
+            $('#sedex-days').remove();
+            $('label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  15 dias úteis   </span>');
+            $('label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  5 dias úteis   </span>');
         })
 
     });
