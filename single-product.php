@@ -151,8 +151,10 @@
 	</div>
 
 	<?php get_template_part( 'selos' ); ?>
-
-	<section id="product-description" class="info-section">					
+	<!--//////////////////////////////////////////////////////////
+	//////////// MODELO DE TABS CORRIDA - DESABILITADO
+	////////////////////////////////////-->
+	<!-- <section id="product-description" class="info-section">					
 			<div class="title-line">
 				<div class="container title">
 						<div class="col-12 p-0 pb-3"><h2>Descrição</h2></div>
@@ -161,7 +163,7 @@
 			<div class="content-line">
 				<div class="container">
 						<div class="col-12 p-0">
-							<?php the_content(); ?>
+							<?php //the_content(); ?>
 						</div>
 				</div>
 			</div>
@@ -175,7 +177,7 @@
 			</div>
 			<div class="container">
 				<div class="col-12 p-0 pt-4">
-						<?php echo get_field('nossa_promessa', get_the_ID()); ?>
+						<?php //echo get_field('nossa_promessa', get_the_ID()); ?>
 				</div>
 			</div>
 	</section>
@@ -188,7 +190,7 @@
 			</div>
 			<div class="container">
 					<div class="col-12 p-0 pt-4">
-							<?php echo get_field('perguntas_frequentes', get_the_ID()); ?>
+							<?php //echo get_field('perguntas_frequentes', get_the_ID()); ?>
 					</div>
 			</div>
 	</section>
@@ -201,7 +203,7 @@
 			</div>
 			<div class="container">
 					<div class="col-12 p-0 pt-4">
-							<?php echo get_field('referencias_clinicas', get_the_ID()); ?>
+							<?php //echo get_field('referencias_clinicas', get_the_ID()); ?>
 					</div>
 			</div>
 	</section>
@@ -216,12 +218,84 @@
 			</div>
 				<div class="container">
 						<div class="col-12 p-0 pt-4">
-							<?php comments_template( 'woocommerce/single-product-reviews' ); ?>
+							<?php //comments_template( 'woocommerce/single-product-reviews' ); ?>
 						</div>
 				</div>
 
+	</section> -->
+
+
+	<section id="tabs" class="d-none d-xl-block"> <!-- //visible on desktop -->
+		<div class="row tab-navigation">
+			<div class="container">				
+				<?php $tab_icons = [
+					'<i class="fas fa-info-circle"></i>',
+					'<i class="far fa-star"></i>',
+					'<i class="far fa-file-alt"></i>',
+					'<i class="far fa-question-circle"></i>',
+					'<i class="fas fa-book"></i>'
+				]; ?>
+				<?php $tabs = apply_filters( 'woocommerce_product_tabs', array() ); ?>
+				<div class="row">
+					<ul id="myTab" class="nav nav-tabs">
+						<?php $i=0; foreach ( $tabs as $key => $tab ) : ?>
+			             <li class="nav-item">
+						    <a class="nav-link <?php echo $i == 0?'active':'' ?>" href="#tab-<?php echo esc_attr( $key ); ?>">
+						    <?= $tab_icons[$i] ?> <?php echo apply_filters( 'woocommerce_product_' . $key . '_tab_title', esc_html( $tab['title'] ), $key ); ?></a>
+						  </li>
+			            <?php $i++; endforeach; ?>					  
+					</ul>
+				</div>
+			</div>
+		</div>    
+
+		<div class="container">
+			<div class="row">
+				<div class="tab-content" id="myTabContent">
+
+				  <?php $i = 1; foreach ( $tabs as $key => $tab ) : ?>
+
+	           		<div class="tab-pane fade show <?php echo $i == 1?'active':'' ?>"
+	           			 id="tab-<?php echo esc_attr( $key ); ?>"
+           			     role="tabpanel"
+           			     aria-labelledby="tab-title-<?php echo esc_attr( $key ); ?>">
+						 <?php if ( isset( $tab['callback'] ) ) { call_user_func( $tab['callback'], $key, $tab ); } ?>
+					</div>
+						
+		          <?php $i++; endforeach; ?>
+
+				</div>
+			</div>
+		</div>
 	</section>
 
+	<section id="mobile-product-tabs" class="d-xl-none">
+		<div class="accordion" id="accordionExample">
+			<?php $i=0; foreach ( $tabs as $key => $tab ) : ?>			
+			  <div class="card" id="card-<?= $i ?>">
+			    <div class="card-header collapse-close" id="collapse-<?= $i ?>">
+			      <h5 class="mb-0">
+			        <button class="btn btn-link collapse-button" type="button" data-toggle="collapse" data-target="#<?php echo $key; ?>" aria-expanded="true" aria-controls="<?php echo $key; ?>" data-id="<?= $i ?>">
+						<?php echo $tab_icons[$i] ?>
+			        	<?php echo $tab['title'] ?>	
+			        	<span class="float-right">
+			        		<i class="collapse-icon fas fa-plus" id="icon-<?= $i ?>"></i>
+			        	</span>	          
+			        </button>
+			      </h5>
+			    </div>
+
+			    <div id="<?php echo $key; ?>" class="collapse" aria-labelledby="collapse-<?= $i ?>" data-parent="#accordionExample">
+			      <div class="card-body">
+			        <div class="container">
+			        	<?php if ( isset( $tab['callback'] ) ) { call_user_func( $tab['callback'], $key, $tab ); } ?>
+			        </div>
+			      </div>
+			    </div>
+			  </div>
+			<?php $i++; endforeach; ?>
+		</div>
+	</section>
 
 
 

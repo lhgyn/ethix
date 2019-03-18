@@ -25,7 +25,7 @@
                         <h3>Informações</h3>
                         <?php dynamic_sidebar( 'footer-4' ) ?>
                     </div>
-				</div>
+                </div>
 			</div>
 		</div>
 		<a href="#" id="back-to-top" title="Back to top"><i class="fas fa-sort-up icon-back-to-top"></i></a>
@@ -34,7 +34,8 @@
 
 	<div id="footer-copy">
 		<div class="col text-center">
-			<p>&copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados </p>
+            <p><small>N1 SUPPLEMENTS COMÉRCIO E DISTRIBUIÇÃO LTDA: CNPJ: 32.017.806/0001-89 | &copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados</small></p>
+			<p> </p>
 		</div>
 	</div>
 </footer>
@@ -132,6 +133,17 @@ jQuery(document).ready(function($) {
             });
             
         });
+
+
+        //$('label[for="shipping_method_0_correios-pac3"]').append('<span>  15 dias   </span>');
+        //$('label[for="shipping_method_0_correios-sedex4"]').append('<span>  5 dias   </span>');
+        
+        
+		$( document ).ajaxComplete(function(){
+            $('label[for="shipping_method_0_correios-pac3"]').append('<span>  15 dias úteis   </span>');
+            $('label[for="shipping_method_0_correios-sedex4"]').append('<span>  5 dias úteis   </span>');
+        })
+
     });
 </script>
 
