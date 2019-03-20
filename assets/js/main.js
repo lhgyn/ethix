@@ -291,6 +291,7 @@ jQuery(document).ready(function($) {
 
     validateForm = {
         validate: function(tab, btnleft, btnright){
+            changeTabs.go( tab, btnleft, btnright );
             if( !$('#checkout-form').attr('data-status') == 'loged' ){
                changeTabs.go( tab, btnleft, btnright );
             }else{

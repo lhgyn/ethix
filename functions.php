@@ -561,3 +561,13 @@ function product_single_custom_css(){
     .'<style>'.get_field('custom_css', get_the_ID()).'</style>';
 }
 add_action( 'wp_head', 'product_single_custom_css' );
+
+
+
+
+function freteStyle(){
+    if(is_page('finalizar-compra')){ ?>
+        
+    <?php }
+}
+add_action('init', 'freteStyle');

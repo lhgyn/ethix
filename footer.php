@@ -133,18 +133,48 @@ jQuery(document).ready(function($) {
             });
             
         });
-        
-        
-		$( document ).ajaxComplete(function(){
-            $('#pac-days').remove();
-            $('#sedex-days').remove();
-            $('label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  15 dias úteis   </span>');
-            $('label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  5 dias úteis   </span>');
-        })
 
     });
 </script>
 
+<script>
+    /////////////////////////////////////////
+    //////////// box de frete página de checkout -> tab de frete
+    ///////////////////////////////
+    jQuery(document).ready(function($){
+        $('#checkout-form tr.woocommerce-shipping-totals > th').remove();
+        $('#checkout-form input[type="radio"]').css({'opacity': '0'});
+        $( document ).ajaxComplete(function(){
 
+            //////// MODIFICAÇÕES NO FRETE
+            $('#checkout-form tr.woocommerce-shipping-totals > th').remove();
+            $('#pac-days').remove();
+            $('#sedex-days').remove();
+
+            var pac = $('#shipping_method li:nth-child(1) > p > small').html();
+            var sdx = $('#shipping_method li:nth-child(2) > p > small').html();
+            $('#shipping_method li:nth-child(1) > p').remove();
+            $('#shipping_method li:nth-child(2) > p').remove();
+
+            $('label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  <small>  &nbsp;[ '+pac+' ]</small> </span>');
+            $('label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  <small>  &nbsp;[ '+sdx+' ]</small> </span>');
+
+            $("#shipping_method_0_correios-pac3").wrap('<span class="radio-box"></span>');
+            $("#shipping_method_0_correios-sedex4").wrap('<span class="radio-box"></span>');
+            $(".radio-box").append('<span class="checkmark"></span>');
+
+
+            ///////// MODIFICAÇÃO NO PAGAMENTO
+            $('#payment input[id="payment_method_pagarme-credit-card"], #payment label[for="payment_method_pagarme-credit-card"]').wrapAll('<div class="radio-wrap"></div>');            
+            $('#payment input[id="payment_method_pagarme-banking-ticket"], #payment label[for="payment_method_pagarme-banking-ticket"]').wrapAll('<div class="radio-wrap"></div>');
+                 
+            $('#payment input[type="radio"]').wrap('<div class="radio-box"></div>'); 
+            $('#payment .radio-box').append('<span class="checkmark"></span>');      
+            $('#payment .radio-wrap').wrapAll('<div id="radio-wrap"></div>');      
+            
+            
+        })
+    });
+</script>
 </body>
 </html>

@@ -573,3 +573,133 @@ and (max-width: 992px){
 
 
 #commentform .comment-form-rating .stars:nth-child(2){ display: none !important }
+
+.woocommerce #checkout-form ul#shipping_method{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.woocommerce #checkout-form ul#shipping_method li{
+    position: relative;
+    display: flex;
+    flex: 50;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    margin: 0px;
+    padding: 15px;
+}
+.woocommerce #checkout-form ul#shipping_method li label{ margin: 0 !important; }
+.woocommerce #checkout-form ul#shipping_method li:first-child{ margin-right: 8px; }
+.woocommerce #checkout-form ul#shipping_method li:last-child{ margin-left: 8px; }
+
+#pac-days small, #sedex-days small{ display: flex; margin-left: -3px; }
+
+
+/* The container */
+.radio-box {
+    display: block;
+    position: relative;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+.radio-box label[for="shipping_method_0_correios-pac3"]{ display: flex !important; flex-direction: column !important; }
+  
+/* Hide the browser's default radio button */
+.radio-box input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+z-index: 99;
+display: flex;
+align-items: center;
+justify-content: center;
+top: 4px;
+left: 7px;
+}
+
+/* Create a custom radio button */
+.checkmark {
+position: absolute;
+top: 0; left: 0;
+height: 25px; width: 25px;
+background-color: #aaa;
+border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.radio-box:hover input ~ .checkmark {
+background-color: #777;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-box input:checked ~ .checkmark {
+background-color: #02708a;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+position: absolute;
+display: block;
+font-family: "FontAwesome";
+content: "\f00c";
+font-size: 18px;
+color: #aaa;
+left: 4px;
+top: 1px;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-box input:checked ~ .checkmark:after {
+display: block;
+font-family: "FontAwesome";
+content: "\f00c";
+font-size: 18px;
+color: #fff;
+left: 4px;
+top: 1px;
+}
+
+
+
+.payment-radios{
+    display: flex;
+    margin-bottom: 25px;
+}
+.wrap-radio-button{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px 0;    
+    margin-right: 25px;
+}
+.wrap-radio-button input, .wrap-radio-button label{
+    margin: 0; padding: 0;
+}
+
+
+.woocommerce-cart ul#shipping_method input[type="radio"]{
+    opacity: 0;
+}
+.woocommerce-cart ul#shipping_method > li{
+    line-height: 1.4;
+    display: flex;
+    align-content: center;
+}
+
+#radio-wrap{
+    display: flex;
+}
+#radio-wrap .radio-wrap{
+    display: flex;
+    padding: 15px 0 25px 0;
+    margin-right: 25px;
+}
+
+#radio-wrap .radio-wrap label{
+    margin: 0;
+}
+#radio-wrap .checkmark{
+    line-height: 1.4; 
+}
