@@ -50,7 +50,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
 ?>
 <div class="row">
-	<div class="col-8">
+	<div class="col-12 col-lg-8">
 		<div class="woocommerce-form-login-toggle">
 			<?php if(!is_user_logged_in()):
 			wc_print_notice( apply_filters( 'woocommerce_checkout_login_message', __( 'Returning customer?', 'woocommerce' ) ) . ' <a href="#" class="showlogin">' . __( 'Click here to login', 'woocommerce' ) . '</a>', 'notice' ); ?>

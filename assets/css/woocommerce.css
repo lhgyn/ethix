@@ -609,15 +609,15 @@ and (max-width: 992px){
   
 /* Hide the browser's default radio button */
 .radio-box input {
-position: absolute;
-opacity: 0;
-cursor: pointer;
-z-index: 99;
-display: flex;
-align-items: center;
-justify-content: center;
-top: 4px;
-left: 7px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 4px;
+    left: 7px;
 }
 
 /* Create a custom radio button */
@@ -722,4 +722,64 @@ left: 7px;
 .woocommerce-cart ul#shipping_method > li span{
     margin-right: 10px !important;
     margin-top: -9px !important;
+}
+
+
+@media only screen and (max-width:768px){
+    .woocommerce-cart ul#shipping_method{
+        margin-top: 40px;
+        margin-bottom: 25px;
+    }
+    .woocommerce-cart ul#shipping_method li{
+        display: flex;
+        flex-direction: row-reverse;
+        border: 1px solid #ccc;
+        padding: 5px 15px;
+    }
+    .woocommerce-cart ul#shipping_method label{
+        width: 180px !important;
+        margin-right: 15px;
+    }
+    .woocommerce-cart ul#shipping_method > li span{
+        margin: 0 !important;
+    }
+    .woocommerce-cart ul#shipping_method > li span small{
+        justify-content: flex-end;
+    }
+    .woocommerce #checkout-form ul#shipping_method{
+        flex-direction: column;        
+    }
+    .woocommerce #checkout-form ul#shipping_method li{
+        width: 100%;
+        margin: 0 !important;
+    }
+    .woocommerce #checkout-form ul#shipping_method li:last-child{
+        margin-top: 5px !important;
+    }
+    .woocommerce #checkout-form ul#shipping_method li{
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+    #radio-wrap{
+        flex-direction: column;
+        margin-bottom: 25px;
+    }
+    #radio-wrap .radio-wrap {
+        display: flex;
+        align-items: center;
+        padding: 5px;
+        margin-right: 0px;        
+        border: 1px solid #eee;
+    }
+}
+@media only screen and (max-width:408px){
+    .woocommerce #payment #place_order, .woocommerce-page #payment #place_order{
+        margin-bottom: 33px;
+        left: 18px;
+        border: 0;
+        max-width: 100%;
+    }
+    #btn-two.last-step {
+        margin-top: 60px !important;
+    }
 }
