@@ -640,7 +640,7 @@ and (max-width: 992px){
 
 /* When the radio button is checked, add a blue background */
 .radio-box input:checked ~ .checkmark {
-    background-color: #02708a;
+    background-color: #8bc34a;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
