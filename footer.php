@@ -153,15 +153,15 @@ jQuery(document).ready(function($) {
 
             var pac = $('#shipping_method li:nth-child(1) > p > small').html();
             var sdx = $('#shipping_method li:nth-child(2) > p > small').html();
-            $('#shipping_method li:nth-child(1) > p').remove();
-            $('#shipping_method li:nth-child(2) > p').remove();
+            $('#shipping_method li:nth-child(1) > p').css({'display': 'none'});
+            $('#shipping_method li:nth-child(2) > p').css({'display': 'none'});
 
             $('label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  <small>  &nbsp;[ '+pac+' ]</small> </span>');
             $('label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  <small>  &nbsp;[ '+sdx+' ]</small> </span>');
 
             $("#shipping_method_0_correios-pac3").wrap('<span class="radio-box"></span>');
             $("#shipping_method_0_correios-sedex4").wrap('<span class="radio-box"></span>');
-            $(".radio-box").append('<span class="checkmark"></span>');
+            $(".radio-box").append('<span class="checkmark"></span>');            
 
 
             ///////// MODIFICAÇÃO NO PAGAMENTO
@@ -170,11 +170,13 @@ jQuery(document).ready(function($) {
                  
             $('#payment input[type="radio"]').wrap('<div class="radio-box"></div>'); 
             $('#payment .radio-box').append('<span class="checkmark"></span>');      
-            $('#payment .radio-wrap').wrapAll('<div id="radio-wrap"></div>');      
-            
+            $('#payment .radio-wrap').wrapAll('<div id="radio-wrap"></div>');
             
         })
+
     });
+
+    
 </script>
 </body>
 </html>
