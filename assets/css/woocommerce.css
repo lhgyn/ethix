@@ -596,75 +596,7 @@ and (max-width: 992px){
 #pac-days small, #sedex-days small{ display: flex; margin-left: -3px; }
 
 
-/* The container */
-.radio-box {
-    display: block;
-    position: relative;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-}
-.woocommerce label{ cursor: pointer !important; }
-.radio-box label[for="shipping_method_0_correios-pac3"]{ display: flex !important; flex-direction: column !important; }
-  
-/* Hide the browser's default radio button */
-.radio-box input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    z-index: 99;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    top: 4px;
-    left: 7px;
-}
 
-/* Create a custom radio button */
-.checkmark {
-    position: absolute;
-    top: 0; left: 0;
-    height: 25px; width: 25px;
-    background-color: #999;
-    border-radius: 50%;
-}
-.checkmark:hover > :after {
-    color: #fff;
-}
-
-/* On mouse-over, add a grey background color */
-.radio-box:hover input ~ .checkmark {
-    background-color: #777;
-}
-.radio-box:hover input ~ .checkmark:after { color: #fff } 
-
-/* When the radio button is checked, add a blue background */
-.radio-box input:checked ~ .checkmark {
-    background-color: #8bc34a;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    position: absolute;
-    display: block;
-    font-family: "FontAwesome";
-    content: "\f00c";
-    font-size: 18px;
-    color: transparent;
-    left: 4px;
-    top: 1px;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.radio-box input:checked ~ .checkmark:after {
-    display: block;
-    font-family: "FontAwesome";
-    content: "\f00c";
-    font-size: 18px;
-    color: #fff;
-    left: 4px;
-    top: 1px;
-}
 
 
 
@@ -686,7 +618,6 @@ and (max-width: 992px){
 
 
 .woocommerce ul#shipping_method .radio-box{ margin-right: 25px;}
-
 #radio-wrap{
     display: flex;
 }
@@ -782,4 +713,111 @@ and (max-width: 992px){
     #btn-two.last-step {
         margin-top: 60px !important;
     }
+}
+
+/*///////////////////////////////
+///////////// carrinho custom btn radio
+//////////////////////////////////////////////////////*/
+body.woocommerce-cart #shipping_method li,
+li.payment_method_pagarme-credit-card,
+li.payment_method_pagarme-banking-ticket{
+    display: flex; flex-direction: column; align-items: flex-start;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+}
+body.woocommerce-cart #shipping_method li p,
+body.woocommerce-cart #shipping_method li label{ margin: 0; }
+
+input[id=shipping_method_0_correios-pac3],
+input[id=shipping_method_0_correios-sedex4],
+#payment input[id="payment_method_pagarme-credit-card"],
+#payment input[id="payment_method_pagarme-banking-ticket"]{
+    position: absolute;
+    top: calc(50% - 9px); left: 0;
+    opacity: 1 !important;
+}
+input[id=shipping_method_0_correios-pac3]::before,
+input[id=shipping_method_0_correios-sedex4]::before,
+input[id="payment_method_pagarme-credit-card"]::before,
+input[id="payment_method_pagarme-banking-ticket"]::before {
+    content: '';
+    position: absolute;
+    top: -7px; left: -7px;
+    width: 25px; height: 25px;
+    background: #999;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+input[id=shipping_method_0_correios-pac3]:checked::before,
+input[id=shipping_method_0_correios-sedex4]:checked::before,
+#payment input[id="payment_method_pagarme-credit-card"]::before,
+#payment input[id="payment_method_pagarme-banking-ticket"]::before {
+    content: "";
+    background: #4CAF50;
+}
+
+input[id=shipping_method_0_correios-pac3]:checked::after,
+input[id=shipping_method_0_correios-sedex4]:checked::after,
+#payment input[id="payment_method_pagarme-credit-card"]::after,
+#payment input[id="payment_method_pagarme-banking-ticket"]::after {
+    position: absolute;
+    width: 25px; left: 25px;
+    top: -6px; left: -3px;   
+    font-family: 'FontAwesome';
+    content: "\f00c";
+    font-size: 18px;
+    color: #fff;
+}
+
+@media only screen and ( max-width: 992px ){
+    body.woocommerce-cart #shipping_method li{
+        align-items: flex-end;
+    }
+    input[id=shipping_method_0_correios-pac3], input[id=shipping_method_0_correios-sedex4]{
+        left: 15px;
+    }
+}
+
+
+
+
+
+#checkout-form .my-custom-shipping-table .woocommerce-shipping-totals th{
+    display: none;
+}
+#checkout-form .my-custom-shipping-table #shipping_method li{
+    flex-direction: column !important;
+    align-items: flex-end !important;
+}
+#checkout-form .my-custom-shipping-table #shipping_method li input{
+    left: 15px;
+}
+#checkout-form .my-custom-shipping-table #shipping_method li p{ margin: 0; }
+
+
+
+
+#payment li{
+    padding: 0;
+} 
+#payment #radio-wrap{
+    width: 100%;
+    margin-bottom: 20px;
+}
+#payment #radio-wrap .radio-wrap{
+    position: relative;
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px 15px;
+    padding-left: 38px;
+}
+#payment #radio-wrap .radio-wrap input{
+    left: 15px;
+    top: calc(50% - 6px);
+}
+#payment #radio-wrap .radio-wrap input::after{
+    top: -12px;
+    left: -2px;
 }

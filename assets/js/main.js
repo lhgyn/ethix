@@ -142,93 +142,139 @@ jQuery(document).ready(function($) {
     });
 
 
-    /**** VALIDAÇÃO DE CPF */
-    $('#billing_cpf').focusout(function(event) {
-        cpf = $(this).val();
-        len = $(this).val().length;
-
-        if( len > 0 && len < 14 ){
-            $("#billing_cpf").css('border-color',  'red');
-            $("#billing_cpf").val('').focus();
-            $("#billing_cpf").attr('placeholder', 'Digite seu cpf válido');
-                cpf_hasError = 1;
-            return;
-        }
-
-        if( len === 14 ) {
-            if(valida_cpf_cnpj( cpf )){
-                $("#billing_cpf").css('border-color',  'limegreen');
-                cpf_hasError = 0;
-            }else {
+    ////////////////////////////
+    ///////***** VERIFICAÇÃO DE CPF *****
+    ///////////////////
+    validaCpf = {
+        go: function(cpf){            
+            if( cpf.length  > 0 && cpf.length  < 14 ){
+                alert('cpf invalido')
                 $("#billing_cpf").css('border-color',  'red');
                 $("#billing_cpf").val('').focus();
-                $("#billing_cpf").attr('placeholder', 'CPF Inválido');
+                $("#billing_cpf").attr('placeholder', 'Digite seu cpf válido');
                 cpf_hasError = 1;
-            }            
-        }          
-
-    }); 
-
-
-    /**** VALIDAÇÃO DE TELEFONE */
-    $('#billing_phone').change(function(){      
-        let phone = $(this).val();
-        let len = $(this).val().length;
-
-        if(len < 14){            
-            $("#billing_phone").css('border-color',  'red');
-            $("#billing_phone").val('').focus();
-            $("#billing_phone").attr('placeholder', 'Telefone Inválido'); 
-            phone_hasError = 1; 
+                return;
+            }
+    
+            if( cpf.length  === 14 ) {
+                if(valida_cpf_cnpj( cpf )){
+                    $("#billing_cpf").css('border-color',  'limegreen');
+                    cpf_hasError = 0;
+                }else {
+                    alert('cpf invalido')
+                    $("#billing_cpf").css('border-color',  'red');
+                    $("#billing_cpf").val('').focus();
+                    $("#billing_cpf").attr('placeholder', 'CPF Inválido');
+                    cpf_hasError = 1;
+                }            
+            }
         }
-        else
-        {
-            $("#billing_phone").css('border-color',  'limegreen');
-            phone_hasError = 0;
-        }        
+    }
+
+    // if( $('#billing_cpf').val() != '' ){
+    //     let cpf = $('#billing_cpf').val();
+    //     alert('cpf' + cpf);
+    //     console.log('cpf está preenchido: '+cpf);
+    //     validaCpf.go(cpf);
+    // }
+    $('#billing_cpf').focusout(function(event) {
+        let cpf = $('#billing_cpf').val();
+        console.log('cpf digitado: '+cpf);  
+        validaCpf.go(cpf);
     });
 
 
-    /***** AUTOCOMPLETE DE CEP */
-    $('#billing_postcode').keyup(function(event) {
-        var cep = $(this).val();
-        len = $(this).val().length;
-        if(len === 9){
-            $.get(`https://viacep.com.br/ws/${cep}/json`, function(data) {
-                if(data.erro == true){
-                    $("#billing_postcode").css('border-color',  'red');
-                    $("#billing_postcode").attr('placeholder', 'Cep Inválido');
-                    $("#billing_postcode").val('').focus();
-                    return;
-                }
+    ////////////////////////////
+    ///////***** VERIFICAÇÃO DE TELEFONE *****
+    ///////////////////    
+    validaPhone = {
+        go: function(phone){
+            if(phone.length < 14){            
+                $("#billing_phone").css('border-color',  'red');
+                $("#billing_phone").val('').focus();
+                $("#billing_phone").attr('placeholder', 'Telefone Inválido'); 
+                phone_hasError = 1; 
+            }
+            else
+            {
+                $("#billing_phone").css('border-color',  'limegreen');
+                phone_hasError = 0;
+            }
+        }
+    }
 
-                $("#billing_postcode").css('border-color',  'limegreen');
+    // if($('#billing_phone').val() != ''){        
+    //     let phone = $('#billing_phone').val(); 
+    //     validaPhone.go(phone);
+    // }
+    $('#billing_phone').change(function(){  
+        let phone = $('#billing_phone').val(); 
+        validaPhone.go(phone);                
+    });
 
-                $("#billing_address_1").val(data.logradouro);
-                $("#billing_address_1").css('border-color',  'limegreen');
-
-                $("#billing_neighborhood").val(data.bairro);
-                $("#billing_neighborhood").css('border-color',  'limegreen');                
-                                
-                $("#billing_city").css('border-color',  'limegreen');                
-                $('#billing_city').val(data.localidade);
-
-                $('#billing_state option[value="'+data.uf+'"]').prop('selected', true); 
-                $("#select2-billing_state-container").attr('title', data.uf);
-                $("#select2-billing_state-container").html(data.uf);
-                $(".select2-selection--single").css('border-color',  'limegreen');
-                $("#billing_state option").each(function () {
-                  if($(this).val() == data.uf){
-                    $(this).prop('selected', true);
-                  }
+    ////////////////////////////
+    ///////***** VERIFICAÇÃO E AUTOCOMPLETE DE CEP *****
+    ///////////////////
+    validaCep = {
+        go: function(cep, len){
+            if(len === 9){
+                $.get(`https://viacep.com.br/ws/${cep}/json`, function(data) {
+                    if(data.erro == true){
+                        $("#billing_postcode").css('border-color',  'red');
+                        $("#billing_postcode").attr('placeholder', 'Cep Inválido');
+                        $("#billing_postcode").val('').focus();
+                        return;
+                    }
+                    autofillCep.go(data);        
                 });
-                cep_hasError = 0;
-
-                $("#billing_number").focus();
-            });
+            }
         }
+    }
 
+    autofillCep = {
+        go: function(data){ 
+            $("#billing_postcode").css('border-color',  'limegreen');
+    
+            $("#billing_address_1").val(data.logradouro);
+            $("#billing_address_1").css('border-color',  'limegreen');
+
+            if( $('#billing_number').val() != '' )
+                $('#billing_number').css('border-color',  'limegreen');
+    
+            $("#billing_neighborhood").val(data.bairro);
+            $("#billing_neighborhood").css('border-color',  'limegreen');                
+                            
+            $("#billing_city").css('border-color',  'limegreen');                
+            $('#billing_city').val(data.localidade);
+    
+            $('#billing_state option[value="'+data.uf+'"]').prop('selected', true); 
+            $("#select2-billing_state-container").attr('title', data.uf);
+            $("#select2-billing_state-container").html(data.uf);
+            $(".select2-selection--single").css('border-color',  'limegreen');
+            $("#billing_state option").each(function () {
+                if($(this).val() == data.uf){
+                    $(this).prop('selected', true);
+                }
+            });
+            cep_hasError = 0;
+    
+            $("#billing_number").focus();
+        }
+    }
+
+    // if(  $('#billing_postcode').val() != '' ){        
+    //     let cep = $('#billing_postcode').val();
+    //     let len = $('#billing_postcode').val().length;
+    //     validaCep.go(cep, len);        
+    // }
+    $('#billing_postcode').keyup(function(event) {
+        let cep = $('#billing_postcode').val();
+        let len = $('#billing_postcode').val().length;
+        if(len === 9){
+            validaCep.go(cep, len);  
+        }  
     });
+    // ******* FIM DA VALIDAÇÃO DE CEP *******************
 
     
 
@@ -292,8 +338,10 @@ jQuery(document).ready(function($) {
     validateForm = {
         validate: function(tab, btnleft, btnright){
             changeTabs.go( tab, btnleft, btnright );
-            if( !$('#checkout-form').attr('data-status') == 'loged' ){
+            if( $('#checkout-form').attr('data-status') == 'loged' ){
                changeTabs.go( tab, btnleft, btnright );
+               $('#checkout-step1').addClass('active');
+               $('#checkout-step2').addClass('active');
             }else{
                 if(name_hasError == 0 && last_name_hasError == 0 && cpf_hasError == 0 && phone_hasError == 0 && cep_hasError == 0){
                     changeTabs.go( tab, btnleft, btnright )

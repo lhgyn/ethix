@@ -9,21 +9,34 @@
 		<div id="footer-widgets" class="row">
 			<div class="container">
 				<div class="row">
-					<div class="col-md">
-                        <h3>Sobre a Ethix</h3>
-						<?php dynamic_sidebar( 'footer-1' ) ?>
+					<div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <h3>Sobre a Ethix</h3>
+						        <?php dynamic_sidebar( 'footer-1' ) ?>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <h3>Empresa</h3>
+                                <?php dynamic_sidebar( 'footer-2' ) ?>
+                            </div>
+                            <div class="col-12 mt-4 d-none d-lg-block">                            
+                                <h5 class="mb-3">Pague com</h5>
+                                <img class="img-fluid" style="max-width: 90%" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-desktop.png" alt="">
+                            </div>
+                        </div>
 					</div>
-					<div class="col-md">
-                        <h3>Empresa</h3>
-						<?php dynamic_sidebar( 'footer-2' ) ?>
-					</div>
-                    <div class="col-md">
+                    <div class="col-12 col-lg-3">
                         <h3>Atendimento</h3>
                         <?php dynamic_sidebar( 'footer-3' ) ?>
                     </div>
-                    <div class="col-md">
+                    <div class="col-12 col-lg-3">
                         <h3>Informações</h3>
                         <?php dynamic_sidebar( 'footer-4' ) ?>
+                    </div>
+                    
+                    <div class="col-8 pt-4 d-lg-none">                            
+                        <h5 class="mb-2">Pague com</h5>
+                        <img class="img-fluid" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-mobile.png" alt="">
                     </div>
                 </div>
 			</div>
@@ -31,6 +44,28 @@
 		<a href="#" id="back-to-top" title="Back to top"><i class="fas fa-sort-up icon-back-to-top"></i></a>
 	</div>
 	<?php endif; ?>
+
+    <!-- //////////////////////////////////
+    //////// Selos e pagamento na página de checkout, desktop e responsive. 
+    ///////////////////// -->
+    <?php if(is_page('finalizar-compra')):?>
+    <div class="container-fluid">
+        <div class="row" style="background: #046076">
+            <div class="container">
+                <div class="row justify-content-lg-center pt-3 pb-4">
+                    <div class="col-7 pt-3 d-none d-lg-block">                            
+                        <h5 class="mb-3 text-center" style="color: #fff">Pague com</h5>
+                        <img class="img-fluid text-center" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-desktop.png" alt="">
+                    </div>
+                    <div class="col-8 pt-4 d-lg-none">                            
+                        <h5 class="mb-3" style="color: #FFF">Pague com</h5>
+                        <img class="img-fluid" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-mobile.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
 	<div id="footer-copy">
 		<div class="col text-center">
@@ -144,39 +179,77 @@ jQuery(document).ready(function($) {
     jQuery(document).ready(function($){
         $('#checkout-form tr.woocommerce-shipping-totals > th').remove();
         $('#checkout-form input[type="radio"]').css({'opacity': '0'});
+         
+
         $( document ).ajaxComplete(function(){
 
-            //////// MODIFICAÇÕES NO FRETE
-            $('#checkout-form tr.woocommerce-shipping-totals > th').remove();
-            $('#pac-days').remove();
-            $('#sedex-days').remove();
+        //////// MODIFICAÇÕES NO FRETE
+        // $('#checkout-form tr.woocommerce-shipping-totals > th').remove();
+        // $('#pac-days').remove();
+        // $('#sedex-days').remove();
+        // $('#shipping_method span.radio-box span.checkmark').remove();
 
-            var pac = $('#shipping_method li:nth-child(1) > p > small').html();
-            var sdx = $('#shipping_method li:nth-child(2) > p > small').html();
-            $('#shipping_method li:nth-child(1) > p').css({'display': 'none'});
-            $('#shipping_method li:nth-child(2) > p').css({'display': 'none'});
+        // var pac = $('#shipping_method li:nth-child(1) > p > small').html();
+        // var sdx = $('#shipping_method li:nth-child(2) > p > small').html();
+        // //$('#shipping_method li:nth-child(1) > p').css({'display': 'none'});
+        // //$('#shipping_method li:nth-child(2) > p').css({'display': 'none'});
 
-            $('label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  <small>  &nbsp;[ '+pac+' ]</small> </span>');
-            $('label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  <small>  &nbsp;[ '+sdx+' ]</small> </span>');
+        // $('#tab-two label[for="shipping_method_0_correios-pac3"]').append('<span id="pac-days">  <small>  &nbsp;[ '+pac+' ]</small> </span>');
+        // $('#tab-two label[for="shipping_method_0_correios-sedex4"]').append('<span id="sedex-days">  <small>  &nbsp;[ '+sdx+' ]</small> </span>');
 
-            $("#shipping_method_0_correios-pac3").wrap('<span class="radio-box"></span>');
-            $("#shipping_method_0_correios-sedex4").wrap('<span class="radio-box"></span>');
-            $(".radio-box").append('<span class="checkmark"></span>');            
+        // $("#tab-two #shipping_method_0_correios-pac3").wrap('<span class="radio-box"></span>');
+        // $("#tab-two #shipping_method_0_correios-sedex4").wrap('<span class="radio-box"></span>');
+        // $("#tab-two .radio-box").append('<span class="checkmark"></span>');  
+        
+        
+        /////// MODIFICAÇÃO NO PAGAMENTO
+        $('#payment input[id="payment_method_pagarme-credit-card"], #payment label[for="payment_method_pagarme-credit-card"]').wrapAll('<div class="radio-wrap"></div>');            
+        $('#payment input[id="payment_method_pagarme-banking-ticket"], #payment label[for="payment_method_pagarme-banking-ticket"]').wrapAll('<div class="radio-wrap"></div>');
+                
+        //$('#payment input[type="radio"]').wrap('<div class="radio-box"></div>'); 
+        //$('#payment .radio-box').append('<span class="checkmark"></span>');      
+        $('#payment .radio-wrap').wrapAll('<div id="radio-wrap"></div>');
 
 
-            ///////// MODIFICAÇÃO NO PAGAMENTO
-            $('#payment input[id="payment_method_pagarme-credit-card"], #payment label[for="payment_method_pagarme-credit-card"]').wrapAll('<div class="radio-wrap"></div>');            
-            $('#payment input[id="payment_method_pagarme-banking-ticket"], #payment label[for="payment_method_pagarme-banking-ticket"]').wrapAll('<div class="radio-wrap"></div>');
-                 
-            $('#payment input[type="radio"]').wrap('<div class="radio-box"></div>'); 
-            $('#payment .radio-box').append('<span class="checkmark"></span>');      
-            $('#payment .radio-wrap').wrapAll('<div id="radio-wrap"></div>');
             
-        })
+            
+        });
+        
 
-    });
-
-    
+    });    
 </script>
+
+<?php if(is_page('finalizar-compra')): ?>
+<script>
+    ////////////////////////////////////
+    ///////// VALIDA OS CAMPOS DO CHECKOUT SE O USUÁRIO JÁ ESTIVER LOGADO
+    /////////////////////
+    jQuery(document).ready(function($){
+        if($('#billing_first_name').val().length >= 2){
+            $("#billing_first_name").css('border-color',  'limegreen');
+        }
+        if($('#billing_last_name').val().length >= 2){
+            $("#billing_last_name").css('border-color',  'limegreen');
+        }
+         /** Validação de dados quando logado */
+         if( $('#billing_cpf').val() != '' ){
+            let cpf = $('#billing_cpf').val();
+            validaCpf.go(cpf);
+        }
+        if(  $('#billing_postcode').val() != '' ){        
+            let cep = $('#billing_postcode').val();
+            let len = $('#billing_postcode').val().length;
+            validaCep.go(cep, len);        
+        }
+        if($('#billing_phone').val() != ''){        
+            let phone = $('#billing_phone').val(); 
+            validaPhone.go(phone);
+        }        
+        if($('#billing_email').val() != ''){
+            $("#billing_email").css('border-color',  'limegreen');
+        }
+    })
+</script>
+<?php endif; ?>
 </body>
 </html>
