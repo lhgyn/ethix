@@ -810,7 +810,7 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
 }
 #payment #radio-wrap .radio-wrap input::after{
     top: -12px;
-    left: -2px;
+    left: -3px;
 }
 
 
@@ -822,8 +822,7 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
         left: 15px;
     } 
     #tab-two ul#shipping_method li{
-        max-width: 245px;
-        align-items: center !important;
+        align-items: flex-end !important;
         flex-direction: column !important;
     }   
 }
@@ -831,7 +830,6 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
 @media only screen and ( min-width: 992px ){
     #tab-two ul#shipping_method{
         justify-content: center !important;
-
     }
     #tab-two ul#shipping_method li{
         max-width: 245px;
