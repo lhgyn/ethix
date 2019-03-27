@@ -755,7 +755,7 @@ input[id=shipping_method_0_correios-sedex4]:checked::before,
 #payment input[id="payment_method_pagarme-credit-card"]::before,
 #payment input[id="payment_method_pagarme-banking-ticket"]::before {
     content: "";
-    background: #4CAF50;
+    background: #8bc34a;
 }
 
 input[id=shipping_method_0_correios-pac3]:checked::after,
@@ -771,15 +771,6 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
     color: #fff;
 }
 
-@media only screen and ( max-width: 992px ){
-    body.woocommerce-cart #shipping_method li{
-        align-items: flex-end;
-    }
-    input[id=shipping_method_0_correios-pac3], input[id=shipping_method_0_correios-sedex4]{
-        left: 15px;
-    }
-}
-
 
 
 
@@ -788,8 +779,8 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
     display: none;
 }
 #checkout-form .my-custom-shipping-table #shipping_method li{
-    flex-direction: column !important;
-    align-items: flex-end !important;
+    flex-direction: column-reverse;
+    align-items: flex-end;
 }
 #checkout-form .my-custom-shipping-table #shipping_method li input{
     left: 15px;
@@ -820,4 +811,31 @@ input[id=shipping_method_0_correios-sedex4]:checked::after,
 #payment #radio-wrap .radio-wrap input::after{
     top: -12px;
     left: -2px;
+}
+
+
+@media only screen and ( max-width: 992px ){
+    body.woocommerce-cart #shipping_method li{
+        align-items: flex-end;
+    }
+    input[id=shipping_method_0_correios-pac3], input[id=shipping_method_0_correios-sedex4]{
+        left: 15px;
+    } 
+    #tab-two ul#shipping_method li{
+        max-width: 245px;
+        align-items: center !important;
+        flex-direction: column !important;
+    }   
+}
+
+@media only screen and ( min-width: 992px ){
+    #tab-two ul#shipping_method{
+        justify-content: center !important;
+
+    }
+    #tab-two ul#shipping_method li{
+        max-width: 245px;
+        align-items: center !important;
+    }
+    
 }
