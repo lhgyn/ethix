@@ -32,7 +32,7 @@
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
     
-<header style="position: relative">
+<header id="site-header" style="position: relative">
 	<?php if(!is_page('finalizar-compra')): ?>
 	<nav id="site-navbar" class="navbar navbar-expand-lg navbar-light bg-light d-none d-lg-block">
 	  <div class="container">

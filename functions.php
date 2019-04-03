@@ -55,6 +55,9 @@ function medrx_scripts()
     wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js');
     wp_enqueue_script('products', get_template_directory_uri() . '/assets/js/products.js');
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js');
+    wp_enqueue_script('affix', 'https://rawgit.com/bassjobsen/affix/master/assets/js/affix.js');
+
+    
     //wp_enqueue_script('reloadr', get_template_directory_uri() . '/reloadr.js');
 
     wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/libs/bootstrap4/css/bootstrap.min.css');
@@ -571,3 +574,40 @@ function freteStyle(){
     <?php }
 }
 add_action('init', 'freteStyle');
+
+
+
+/** FUNÇÃO PARA CONTABILIZAR A VISUALIZAÇÃO DOS POSTS */
+function ethix_set_post_views($postID) {
+    $post_views = 'ethix_post_views_count';
+    $count = get_post_meta($postID, $post_views, true);
+    if($count == ''){
+        $count = 0;
+        delete_post_meta($postID, $post_views);
+        add_post_meta($postID, $post_views, '0');
+    }else{
+        $count++;
+        update_post_meta($postID, $post_views, $count);
+    }
+}
+/* VERIFICA SE ESTA NA PÁGINA SINGLE DO POST E CHAMA A FUNÇÃO CONTAR POSTS (ethix_set_post_views) */
+function ethix_track_post_views ($post_id) {
+    if ( !is_single() ) return;
+    if ( empty ( $post_id) ) {
+        global $post;
+        $post_id = $post->ID;    
+    }
+    ethix_set_post_views($post_id);
+}
+add_action( 'wp_head', 'ethix_track_post_views');
+
+function ethix_get_post_views($postID){
+    $count_key = 'ethix_post_views_count';
+    $count = get_post_meta($postID, $count_key, true);
+    if($count == ''){
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, '0');
+        return "0 View";
+    }
+    return $count.' Views';
+}

@@ -3,7 +3,7 @@
 	}
 ?>
 
-<footer>
+<footer id="site-footer">
 	<?php if(!is_page('finalizar-compra')): ?>
 	<div class="container-fluid">		
 		<div id="footer-widgets" class="row">
@@ -77,6 +77,17 @@
 
 
 <?php wp_footer(); ?>
+
+<script>
+        jQuery(document).ready(function($){
+            $('#sidemenu').affix({
+                offset:{
+                    top: $('#header').outerHeight() - 20,
+                    bottom: $('footer').outerHeight() + 50
+                }
+            });
+        });
+    </script>
 
 <script>
 jQuery(document).ready(function($) {
@@ -248,8 +259,23 @@ jQuery(document).ready(function($) {
         if($('#billing_email').val() != ''){
             $("#billing_email").css('border-color',  'limegreen');
         }
+       
     })
 </script>
 <?php endif; ?>
+
+<script>
+    //////////////////////////////////////////////////
+    /////////// FIXA O SIDEBAR DE CATEGORIAS DO BLOG QUANDO ROLA A PÁGINA
+    /////////////////////////////
+
+    jQuery(document).ready(function($){       
+
+    });
+
+
+
+   
+</script>
 </body>
 </html>
