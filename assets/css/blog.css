@@ -412,3 +412,12 @@ and (max-width: 768px){
 	height: 400px;
 	margin-top: 0px
 }
+
+#single-post-content figure{ margin: 0; padding: 0; }
+#single-post-content figure img{
+	object-fit: contain !important;
+	object-position: center !important;
+	margin: 0;
+	padding: 0;
+	height: auto !important;
+}

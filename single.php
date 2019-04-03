@@ -21,7 +21,7 @@
                                             </figure>
                                                                                         
                                         </div>
-                                        <div class="col-12">
+                                        <div id="single-post-content" class="col-12">
 											<?php echo the_content(); ?>
                                         </div>
                                     </div>
