@@ -7,8 +7,8 @@ function wp_bootstrap_pagination( $args = array() ) {
     $defaults = array(
         'range'           => 4,
         'custom_query'    => FALSE,
-        'previous_string' => __( '<i class="fas fa-angle-left"></i>', 'text-domain' ),
-        'next_string'     => __( '<i class="fas fa-angle-right"></i>', 'text-domain' ),
+        'previous_string' => __( '<', 'text-domain' ),
+        'next_string'     => __( '>', 'text-domain' ),
         'before_output'   => '<nav aria-label="Page navigation example"><ul class="pagination">',
         'after_output'    => '</ul></nav>'
     );
@@ -53,7 +53,7 @@ function wp_bootstrap_pagination( $args = array() ) {
     
     $firstpage = esc_attr( get_pagenum_link(1) );
     if ( $firstpage && (1 != $page) )
-        $echo .= '<li class="page-item"><a class="page-link" href="' . $firstpage . '">' . __( '<i class="fas fa-angle-double-left"></i>', 'text-domain' ) . '</a></li>';
+        $echo .= '<li class="page-item"><a class="page-link" href="' . $firstpage . '">' . __( '<<', 'text-domain' ) . '</a></li>';
     if ( $previous && (1 != $page) )
         $echo .= '<li class="page-item"><a class="page-link" href="' . $previous . '" title="' . __( 'previous', 'text-domain') . '">' . $args['previous_string'] . '</a></li>';
     
@@ -74,7 +74,7 @@ function wp_bootstrap_pagination( $args = array() ) {
     
     $lastpage = esc_attr( get_pagenum_link($count) );
     if ( $lastpage ) {
-        $echo .= '<li class="page-item"><a class="page-link" href="' . $lastpage . '">' . __( '<i class="fas fa-angle-double-right"></i>', 'text-domain' ) . '</a></li>';
+        $echo .= '<li class="page-item"><a class="page-link" href="' . $lastpage . '">' . __( '>>', 'text-domain' ) . '</a></li>';
     }
     if ( isset($echo) )
         echo $args['before_output'] . $echo . $args['after_output'];
