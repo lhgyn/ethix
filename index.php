@@ -64,10 +64,12 @@
                                     <div class="row m-0">
                                         <?php while($posts->have_posts()) : ?>
                                         <?php $posts->the_post(); ?>
-                                        <a href="<?php the_permalink(); ?>">
+                                        
                                         <div class="item col-12 col-lg-6">
                                             <figure>
-                                                <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="">
+                                                <a href="<?php the_permalink(); ?>">
+                                                    <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="">
+                                                </a>
                                                 <figcaption>
                                                     <?php
                                                     $categories = get_the_category();
@@ -76,9 +78,8 @@
                                                     } ?>
                                                 </figcaption>
                                             </figure>
-                                            <h4><?php the_title() ?></h4>
+                                            <h4><a href="<?php the_permalink(); ?>"><?php the_title() ?></a></h4>
                                         </div>
-                                        </a>
                                         <?php endwhile; ?>
                                     </div>
                                 </div>

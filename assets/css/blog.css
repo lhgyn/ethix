@@ -372,7 +372,9 @@ and (max-width: 768px){
 }
 #post-categories h4{
 	font-size: 1.3em;
-	color: #005165;
+}
+#post-categories h4 a{
+	color: #005165 !important;
 }
 #post-categories h3:before{ display: none; }
 
@@ -390,6 +392,12 @@ and (max-width: 768px){
 	#post-categories .posts .row .col-lg-6{
 		flex: 100%;
 		max-width: none;
+	}
+	#blog-1md #posts figure figcaption{
+		bottom: 15px !important;
+	}
+	#blog-1md #posts .latest-news figure figcaption a{
+		margin-left: 15px;
 	}
 }
 
