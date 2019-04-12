@@ -25,13 +25,25 @@
                             </div>
                         </div>
 					</div>
-                    <div class="col-12 col-lg-3">
-                        <h3>Atendimento</h3>
-                        <?php dynamic_sidebar( 'footer-3' ) ?>
-                    </div>
-                    <div class="col-12 col-lg-3">
-                        <h3>Informações</h3>
-                        <?php dynamic_sidebar( 'footer-4' ) ?>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <h3>Atendimento</h3>
+                                <?php dynamic_sidebar( 'footer-3' ) ?>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <h3>Informações</h3>
+                                <?php dynamic_sidebar( 'footer-4' ) ?>
+                            </div>
+                            <div class="col-12 content-social">
+                                <ul class="sm-links">
+                                    <li class="badge facebook"><a href="https://www.facebook.com/Ethix-Nutrac%C3%AAuticos-1872377919534396/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="badge instagram"><a href="https://www.instagram.com/ethix.com.br/"><i class="fab fa-instagram"></i></a></li>
+                                    <!-- <li class="badge youtube"><a href="https://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="badge twitter"><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li> -->
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="col-8 pt-4 d-lg-none">                            
@@ -68,9 +80,8 @@
     <?php endif; ?>
 
 	<div id="footer-copy">
-		<div class="col text-center">
-            <p><small>N1 SUPPLEMENTS COMÉRCIO E DISTRIBUIÇÃO LTDA: CNPJ: 32.017.806/0001-89 | &copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados</small></p>
-			<p> </p>
+		<div class="text-center">
+            <p><small class="col">N1 SUPPLEMENTS COMÉRCIO E DISTRIBUIÇÃO LTDA: CNPJ: 32.017.806/0001-89 | &copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados</small></p>	
 		</div>
 	</div>
 </footer>
