@@ -150,7 +150,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 			  <a class="navbar-brand" href="<?php echo home_url() ?>">
 			  	<h1 class="d-none">Ethix</h1>
 			  	<img src="<?php echo get_template_directory_uri() ?>/images/logo4.png" alt="">
-			  	<span class="dashicons dashicons-cart"></span>
+			  	<!-- <span class="dashicons dashicons-cart"></span> -->
 			  </a>
 			  <a href="<?php echo home_url('/carrinho') ?>" class="cart-mobile" style="position:relative">
 			  	<span id="cart-qty" class="count-cart"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
