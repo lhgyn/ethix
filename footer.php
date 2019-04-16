@@ -25,6 +25,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-12 col-lg-6">
                         <div class="row">
                             <div class="col-12 col-lg-6">
@@ -80,9 +81,8 @@
     <?php endif; ?>
 
 	<div id="footer-copy">
-		<div class="col text-center">
-            <p><small>N1 SUPPLEMENTS COMÉRCIO E DISTRIBUIÇÃO LTDA: CNPJ: 32.017.806/0001-89 | &copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados</small></p>
-			<p> </p>
+		<div class="text-center">
+            <p><small class="col">N1 SUPPLEMENTS COMÉRCIO E DISTRIBUIÇÃO LTDA: CNPJ: 32.017.806/0001-89 | &copy; <?php echo date("Y"); ?> Ethix Nutracêuticos – Todos direitos reservados</small></p>	
 		</div>
 	</div>
 </footer>
