@@ -5,15 +5,15 @@
 
 <footer id="site-footer">
 	<?php if(!is_page('finalizar-compra')): ?>
-	<div class="container-fluid">		
-		<div id="footer-widgets" class="row">
-			<div class="container">
-				<div class="row">
-					<div class="col-12 col-lg-6">
+	<div class="container-fluid">      
+        <div id="footer-widgets" class="row">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-6">
                         <div class="row">
                             <div class="col-12 col-lg-6">
                                 <h3>Sobre a Ethix</h3>
-						        <?php dynamic_sidebar( 'footer-1' ) ?>
+                                <?php dynamic_sidebar( 'footer-1' ) ?>
                             </div>
                             <div class="col-12 col-lg-6">
                                 <h3>Empresa</h3>
@@ -24,14 +24,26 @@
                                 <img class="img-fluid" style="max-width: 90%" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-desktop.png" alt="">
                             </div>
                         </div>
-					</div>
-                    <div class="col-12 col-lg-3">
-                        <h3>Atendimento</h3>
-                        <?php dynamic_sidebar( 'footer-3' ) ?>
                     </div>
-                    <div class="col-12 col-lg-3">
-                        <h3>Informações</h3>
-                        <?php dynamic_sidebar( 'footer-4' ) ?>
+                    <div class="col-12 col-lg-6">
+                        <div class="row">
+                            <div class="col-12 col-lg-6">
+                                <h3>Atendimento</h3>
+                                <?php dynamic_sidebar( 'footer-3' ) ?>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <h3>Informações</h3>
+                                <?php dynamic_sidebar( 'footer-4' ) ?>
+                            </div>
+                            <div class="col-12 content-social">
+                                <ul class="sm-links">
+                                    <li class="badge facebook"><a href="https://www.facebook.com/Ethix-Nutrac%C3%AAuticos-1872377919534396/"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="badge instagram"><a href="https://www.instagram.com/ethix.com.br/"><i class="fab fa-instagram"></i></a></li>
+                                    <!-- <li class="badge youtube"><a href="https://youtube.com/"><i class="fab fa-youtube"></i></a></li>
+                                    <li class="badge twitter"><a href="https://twitter.com/"><i class="fab fa-twitter"></i></a></li> -->
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="col-8 pt-4 d-lg-none">                            
@@ -39,10 +51,10 @@
                         <img class="img-fluid" src="<?php echo get_template_directory_uri()?>/images/new-payment-method-mobile.png" alt="">
                     </div>
                 </div>
-			</div>
-		</div>
-		<a href="#" id="back-to-top" title="Back to top"><i class="fas fa-sort-up icon-back-to-top"></i></a>
-	</div>
+            </div>
+        </div>
+        <a href="#" id="back-to-top" title="Back to top"><i class="fas fa-sort-up icon-back-to-top"></i></a>
+    </div>
 	<?php endif; ?>
 
     <!-- //////////////////////////////////
