@@ -296,6 +296,10 @@ jQuery(document).ready(function($) {
                 break;
             case "tab-two":
                 validateForm.validate($(this).attr('data-tab'), '#btn-one', '#btn-three');
+                
+                $('.ball').removeClass('active');
+                $('#checkout-step1').addClass('active');
+                $('#checkout-step2').addClass('active');
 
                 let endereco = $('#billing_address_1').val();
                 let numero = $('#billing_number').val();
