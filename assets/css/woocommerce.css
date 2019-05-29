@@ -745,15 +745,15 @@ input[id="payment_method_pagarme-banking-ticket"]::before {
     position: absolute;
     top: -7px; left: -7px;
     width: 25px; height: 25px;
-    background: #999;
+    background: #bbb;
     border-radius: 25px;
     cursor: pointer;
 }
 
 input[id=shipping_method_0_correios-pac3]:checked::before,
 input[id=shipping_method_0_correios-sedex4]:checked::before,
-#payment input[id="payment_method_pagarme-credit-card"]::before,
-#payment input[id="payment_method_pagarme-banking-ticket"]::before {
+#payment input[id="payment_method_pagarme-credit-card"]:checked::before,
+#payment input[id="payment_method_pagarme-banking-ticket"]:checked::before {
     content: "";
     background: #8bc34a;
 }
