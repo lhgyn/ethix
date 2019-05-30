@@ -1,3 +1,11 @@
+html, body, .w-counter-number, .w-pricing-item-price, .w-tabs-item-title, .stats-block .stats-desc .stats-number{
+	font-family: 'Rubik' !important;
+	font-weight: normal;
+}
+strong{
+	font-weight: 500;
+}
+
 /*///////////////////////////////////////////////
 ///////////// BOOTSTRAP NAV
 ////////////////////////////////*/
@@ -26,11 +34,6 @@ and (min-width: 992px){
 	height: 117px;
 	align-items: center;
 }
-/* .navbar-nav .menu-item{
-	display: flex;
-	height: 100%;
-	align-items: center;
-} */
 .navbar-light .navbar-nav .nav-link{
 	height: 100%;
     align-items: center;

@@ -45,40 +45,27 @@ require_once('includes/wp_bootstrap_pagination.php');
 ////////////////////////////*/
 function medrx_scripts()
 {   
-    //wp_deregister_script( 'jquery' );
+    //////////////////////////
+    // SCRIPTS FOR DEVELOPMENT
     wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-3.3.1.min.js');
     wp_enqueue_script('bootstrap4', get_template_directory_uri() . '/assets/libs/bootstrap4/js/bootstrap.min.js');
     wp_enqueue_script('inputmask', get_template_directory_uri() . '/assets/libs/inputmask/jquery.mask.min.js');
     wp_enqueue_script('owlcarousel', get_template_directory_uri() . '/assets/libs/owl-carousel/owl.carousel.min.js');
-    //wp_enqueue_script('wocoaccordion', get_template_directory_uri() . '/assets/libs/woco-accordion/js/woco.accordion.min.js');
     wp_enqueue_script('fontawesome', get_template_directory_uri() . '/assets/libs/font-awesome5/js/all.min.js');
     wp_enqueue_script('custom', get_template_directory_uri() . '/assets/js/custom.js');
     wp_enqueue_script('products', get_template_directory_uri() . '/assets/js/products.js');
     wp_enqueue_script('main', get_template_directory_uri() . '/assets/js/main.js');
     wp_enqueue_script('affix', 'https://rawgit.com/bassjobsen/affix/master/assets/js/affix.js');
 
-    
-    //wp_enqueue_script('reloadr', get_template_directory_uri() . '/reloadr.js');
+    // ALL SCRIPTS FOR PRODUCTION
+    //wp_enqueue_script('__all-scripts', get_template_directory_uri() . '/assets/js/__all-scripts.min.js');
 
-    wp_enqueue_style('bootstrap', get_template_directory_uri() . '/assets/libs/bootstrap4/css/bootstrap.min.css');
-    wp_enqueue_style('rubik', 'https://fonts.googleapis.com/css?family=Rubik:300,400,500,700,900');
-    wp_enqueue_style('fontawesome', get_template_directory_uri() . '/assets/libs/font-awesome5/css/all.min.css');
-    wp_enqueue_style('animate', get_template_directory_uri() . '/assets/libs/animate/animate.css');
-    wp_enqueue_style('hovereffects', get_template_directory_uri() . '/assets/libs/hover-effects/set2.css');
-    wp_enqueue_style('owlcarousel', get_template_directory_uri() . '/assets/libs/owl-carousel/assets/owl.carousel.min.css');
-    //wp_enqueue_style('wocoaccordion', get_template_directory_uri() . '/assets/libs/woco-accordion/css/woco-accordion.min.css');
-    wp_enqueue_style('header', get_template_directory_uri() . '/assets/css/header.css');
-    wp_enqueue_style('footer', get_template_directory_uri() . '/assets/css/footer.css');
-    wp_enqueue_style('loja', get_template_directory_uri() . '/assets/css/loja.css');
-    wp_enqueue_style('products', get_template_directory_uri() . '/assets/css/products.css');
-    wp_enqueue_style('cart', get_template_directory_uri() . '/assets/css/cart.css');
-    wp_enqueue_style('home', get_template_directory_uri() . '/assets/css/home.css');
-    wp_enqueue_style('main', get_template_directory_uri() . '/assets/css/main.css');
-    wp_enqueue_style('blog', get_template_directory_uri() . '/assets/css/blog.css');
-    wp_enqueue_style('newsletter', get_template_directory_uri() . '/assets/css/newsletter.css');
-    wp_enqueue_style('selos', get_template_directory_uri() . '/assets/css/selos.css');
-    wp_enqueue_style('woocommerce', get_template_directory_uri() . '/assets/css/woocommerce.css');
-    wp_enqueue_style('checkout', get_template_directory_uri() . '/assets/css/checkout.css');
+
+    // ALL STYLES FOR DEVELOPMENT
+    //wp_enqueue_style('_styles', get_template_directory_uri() . '/assets/css/_styles.css');
+
+    // ALL STYLES FOR PRODUCTION
+    wp_enqueue_style('__all-styles', get_template_directory_uri() . '/assets/css/__all-styles.min.css');
     wp_enqueue_style('theme-style', get_stylesheet_uri());
 }
 add_action('wp_enqueue_scripts', 'medrx_scripts');

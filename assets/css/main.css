@@ -1,9 +1,3 @@
-@import url('https://fonts.googleapis.com/css?family=Rubik');
-
-html, body, .w-counter-number, .w-pricing-item-price, .w-tabs-item-title, .stats-block .stats-desc .stats-number{
-	font-family: 'Rubik';
-}
-
 a{
 	color: #7bcbbf;
 }

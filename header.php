@@ -1,10 +1,3 @@
-<?php $rout = home_url( add_query_arg(array(), $wp->request) ); ?>
-<?php if( is_page('finalizar-compra') ){
-    //echo '<script>alert("Pagina de Checkout")</script>';
-    // if( strpos( $current_url, '/payment-method' ) ) {
-    //     echo '<script>alert("Pagamento")</script>';
-    // }
-} ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,11 +12,7 @@
 	'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 	})(window,document,'script','dataLayer','GTM-5N58KTZ');</script>
 
-    <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
-
     <?php wp_head(); ?>
-    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/tonystar/bootstrap-float-label/v4.0.1/dist/bootstrap-float-label.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body <?php body_class()?>>
 
