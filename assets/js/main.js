@@ -105,7 +105,8 @@ jQuery(document).ready(function($) {
 
     /**** VALIDAÇÃO DE NOMES */
     $("#billing_first_name").blur(function(event) {
-        var len = $(this).val().length;
+        var name = $(this).val();
+        var len = name.length;
         if(len < 2){
             $("#billing_first_name").css("border-color",  "red");
             name_hasError = 1;
@@ -116,7 +117,8 @@ jQuery(document).ready(function($) {
         }
     });
     $("#billing_last_name").blur(function(event) {
-        var len = $(this).val().length;
+        var lastname = $(this).val();
+        var len = lastname.length;
         if(len < 2){
             $("#billing_last_name").css("border-color",  "red");
             last_name_hasError = 1;
@@ -245,35 +247,43 @@ jQuery(document).ready(function($) {
 
     $("#billing_postcode").keyup(function(event) {
         var cep = $("#billing_postcode").val();
-        var len = $("#billing_postcode").val().length;
+        var len = cep.length;
         if(len === 9){
             validaCep.go(cep, len);  
         }  
     });
 
 
-    if($("#billing_first_name").val().length >= 2){
-        $("#billing_first_name").css("border-color",  "limegreen");
-    }
-    if($("#billing_last_name").val().length >= 2){
-        $("#billing_last_name").css("border-color",  "limegreen");
-    }
-     /** Validação de dados quando logado */
-     if( $("#billing_cpf").val() != "" ){
-        var cpf = $("#billing_cpf").val();
-        validaCpf.go(cpf);
-    }
-    if(  $("#billing_postcode").val() != "" ){        
-        var cep = $("#billing_postcode").val();
-        var len = $("#billing_postcode").val().length;
-        validaCep.go(cep, len);        
-    }
-    if($("#billing_phone").val() != ""){        
-        var phone = $("#billing_phone").val(); 
-        validaPhone.go(phone);
-    }        
-    if($("#billing_email").val() != ""){
-        $("#billing_email").css("border-color",  "limegreen");
+    //var url = window.location.href;
+    var url = window.location.href;
+    if(url.indexOf('finalizar-compra') >= 0 ){
+        
+        var name = $("#billing_first_name").val();
+        var lastname = $("#billing_first_name").val();
+        if( name.length >= 2 ){
+            $("#billing_first_name").css("border-color",  "limegreen");
+        }
+        if( lastname.length >= 2 ){
+            $("#billing_last_name").css("border-color",  "limegreen");
+        }
+         /** Validação de dados quando logado */
+         if( $("#billing_cpf").val() != "" ){
+            var cpf = $("#billing_cpf").val();
+            validaCpf.go(cpf);
+        }
+        if(  $("#billing_postcode").val() != "" ){        
+            var cep = $("#billing_postcode").val();
+            var len = cep.length;
+            validaCep.go(cep, len);        
+        }
+        if($("#billing_phone").val() != ""){        
+            var phone = $("#billing_phone").val(); 
+            validaPhone.go(phone);
+        }        
+        if($("#billing_email").val() != ""){
+            $("#billing_email").css("border-color",  "limegreen");
+        }
+
     }
 
     // ******* FIM DA VALIDAÇÃO DE CEP *******************
