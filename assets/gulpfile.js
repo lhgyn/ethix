@@ -26,11 +26,6 @@ gulp.task('css-min', function () {
     gulp.src([
         './libs/bootstrap4/css/bootstrap.min.css',
         './css/rubik.font.css',
-        './libs/font-awesome-4.7/css/font-awesome.css',
-        './libs/animate/animate.css',
-        './libs/hover-effects/set1.css',
-        './libs/hover-effects/set2.css',
-        './libs/owl-carousel/assets/owl.carousel.min.css',
         './css/header.css',
         './css/footer.css',
         './css/loja.css',
@@ -43,6 +38,11 @@ gulp.task('css-min', function () {
         './css/selos.css',
         './css/woocommerce.css',
         './css/checkout.css',
+        './libs/font-awesome-4.7/css/font-awesome.css',
+        './libs/animate/animate.css',
+        './libs/hover-effects/set1.css',
+        './libs/hover-effects/set2.css',
+        './libs/owl-carousel/assets/owl.carousel.min.css',
       ])
       .pipe(cssmin())
       .pipe(concat('__all-styles.min.css'))
